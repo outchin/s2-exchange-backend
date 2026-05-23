@@ -1,0 +1,50 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+  <div id="content-main">
+    <p>
+      Upload a CSV file to create or update lottery tickets. Duplicate rows are matched by
+      <strong>draw_date + number + bundle_size</strong> and will update quantity, price, status, and note.
+    </p>
+
+    <h2>CSV Columns</h2>
+    <ul>
+      <li>Required: {{ required_columns }}</li>
+      <li>Optional: {{ optional_columns }}</li>
+      <li>number must be exactly 6 digits. Leading zeroes are preserved.</li>
+      <li>bundle_size must be one of 1, 2, 5, 10.</li>
+      <li>status must be available, reserved, sold, or inactive.</li>
+    </ul>
+
+    <form method="post" enctype="multipart/form-data" novalidate>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div class="submit-row">
+        <input type="submit" value="Import CSV" class="default">
+        <a href=".." class="button cancel-link">Back</a>
+      </div>
+    </form>
+
+    {% if summary %}
+      <h2>Import Summary</h2>
+      <ul>
+        <li>Created: {{ summary.created }}</li>
+        <li>Updated: {{ summary.updated }}</li>
+        <li>Skipped: {{ summary.skipped }}</li>
+        <li>Errors: {{ summary.total_errors }}</li>
+      </ul>
+
+      {% if summary.errors %}
+        <h3>Validation Errors</h3>
+        <ul class="errorlist">
+          {% for error in summary.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endif %}
+
+    <h2>Sample CSV</h2>
+    <pre>{{ sample_csv }}</pre>
+  </div>
+{% endblock %}

@@ -1,0 +1,32 @@
+# Python
+venv/
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info
+dist/
+build/
+
+# Django
+db.sqlite3
+*.log
+staticfiles/
+media/
+
+# Environment
+.env
+.env.local
+
+# Firebase
+firebase-service-account*.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

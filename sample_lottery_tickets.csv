@@ -1,0 +1,5 @@
+draw_date,draw_name,number,bundle_size,quantity,price,status,note
+2026-06-01,Thai Lottery - 2026-06-01,001234,1,10,120,available,
+2026-06-01,Thai Lottery - 2026-06-01,123456,2,5,240,available,2 ticket bundle
+2026-06-01,Thai Lottery - 2026-06-01,234567,5,2,600,available,5 ticket bundle
+2026-06-01,Thai Lottery - 2026-06-01,345678,10,1,1200,available,10 ticket bundle
