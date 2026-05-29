@@ -363,3 +363,99 @@ class LotteryTicket(models.Model):
 
     def __str__(self):
         return f'{self.draw.draw_date} - {self.number} ({self.bundle_size})'
+
+
+class CommunicationChannel(models.Model):
+    """
+    Communication channels for customer support and exchange inquiries.
+    Examples: Facebook, Telegram, Viber, WhatsApp, etc.
+    """
+    PLATFORM_FACEBOOK = 'facebook'
+    PLATFORM_MESSENGER = 'messenger'
+    PLATFORM_TELEGRAM = 'telegram'
+    PLATFORM_VIBER = 'viber'
+    PLATFORM_WHATSAPP = 'whatsapp'
+    PLATFORM_LINE = 'line'
+    PLATFORM_WECHAT = 'wechat'
+    PLATFORM_OTHER = 'other'
+
+    PLATFORM_CHOICES = [
+        (PLATFORM_FACEBOOK, 'Facebook'),
+        (PLATFORM_MESSENGER, 'Facebook Messenger'),
+        (PLATFORM_TELEGRAM, 'Telegram'),
+        (PLATFORM_VIBER, 'Viber'),
+        (PLATFORM_WHATSAPP, 'WhatsApp'),
+        (PLATFORM_LINE, 'LINE'),
+        (PLATFORM_WECHAT, 'WeChat'),
+        (PLATFORM_OTHER, 'Other'),
+    ]
+
+    name = models.CharField(
+        max_length=100,
+        help_text='Display name for the channel (e.g., "Facebook Group", "Telegram Support")'
+    )
+    platform = models.CharField(
+        max_length=20,
+        choices=PLATFORM_CHOICES,
+        default=PLATFORM_OTHER,
+        help_text='Platform type'
+    )
+    url = models.URLField(
+        max_length=500,
+        help_text='URL to redirect users (e.g., Facebook group link, Telegram bot link)'
+    )
+    icon_url = models.URLField(
+        max_length=500,
+        blank=True,
+        help_text='URL to channel icon/logo (optional, can use default platform icons)'
+    )
+    description = models.CharField(
+        max_length=255,
+        blank=True,
+        help_text='Short description (e.g., "Chat with us on Facebook")'
+    )
+    is_active = models.BooleanField(
+        default=True,
+        help_text='Show this channel to users'
+    )
+    sort_order = models.PositiveSmallIntegerField(
+        default=0,
+        help_text='Display order (lower numbers appear first)'
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['sort_order', 'name']
+        verbose_name = 'Communication Channel'
+        verbose_name_plural = 'Communication Channels'
+
+    def __str__(self):
+        return f'{self.name} ({self.get_platform_display()})'
+
+    def to_api_dict(self):
+        """Serialize for API response"""
+        return {
+            'id': self.id,
+            'name': self.name,
+            'platform': self.platform,
+            'platform_display': self.get_platform_display(),
+            'url': self.url,
+            'icon_url': self.icon_url or self.get_default_icon_url(),
+            'description': self.description,
+            'sort_order': self.sort_order,
+        }
+
+    def get_default_icon_url(self):
+        """Return default icon URL based on platform"""
+        # These are placeholder URLs - you can replace with actual CDN URLs later
+        icons = {
+            self.PLATFORM_FACEBOOK: 'https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg',
+            self.PLATFORM_MESSENGER: 'https://upload.wikimedia.org/wikipedia/commons/b/be/Facebook_Messenger_logo_2020.svg',
+            self.PLATFORM_TELEGRAM: 'https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg',
+            self.PLATFORM_VIBER: 'https://upload.wikimedia.org/wikipedia/commons/7/7a/Viber_logo.svg',
+            self.PLATFORM_WHATSAPP: 'https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg',
+            self.PLATFORM_LINE: 'https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg',
+            self.PLATFORM_WECHAT: 'https://upload.wikimedia.org/wikipedia/commons/1/12/WeChat_logo.svg',
+        }
+        return icons.get(self.platform, '')

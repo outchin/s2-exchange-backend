@@ -27,4 +27,7 @@ urlpatterns = [
 
     # Orders
     path('orders/', views.create_order, name='create-order'),
+
+    # Communication channels
+    path('channels/', views.communication_channels, name='communication-channels'),
 ]
