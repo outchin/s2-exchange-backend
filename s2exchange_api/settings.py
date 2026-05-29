@@ -92,32 +92,53 @@ TEMPLATES = [
 WSGI_APPLICATION = 's2exchange_api.wsgi.application'
 ASGI_APPLICATION = 's2exchange_api.asgi.application'
 
-# Channels configuration with Redis
-REDIS_URL = os.environ.get('REDIS_URL', 'redis://localhost:6379')
+# Channels and Cache configuration with Redis fallback
+REDIS_URL = os.environ.get('REDIS_URL', '')
 
-CHANNEL_LAYERS = {
-    'default': {
-        'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        'CONFIG': {
-            'hosts': [REDIS_URL],
-            'capacity': 1500,  # Max messages to queue per channel
-            'expiry': 10,  # Message expiry in seconds
-        },
-    },
-}
+# Check if Redis is available (proper URL with host and port)
+USE_REDIS = REDIS_URL and REDIS_URL.startswith('redis://') and len(REDIS_URL) > 10
 
-# Redis Cache Configuration
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
-        'LOCATION': REDIS_URL,
-        'OPTIONS': {
-            'db': 1,  # Use database 1 for cache (0 is for channels)
+if USE_REDIS:
+    # Production: Use Redis for channels and cache
+    CHANNEL_LAYERS = {
+        'default': {
+            'BACKEND': 'channels_redis.core.RedisChannelLayer',
+            'CONFIG': {
+                'hosts': [REDIS_URL],
+                'capacity': 1500,
+                'expiry': 10,
+            },
         },
-        'KEY_PREFIX': 's2exchange',
-        'TIMEOUT': 300,  # 5 minutes default timeout
     }
-}
+
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+            'LOCATION': REDIS_URL,
+            'OPTIONS': {
+                'db': 1,
+            },
+            'KEY_PREFIX': 's2exchange',
+            'TIMEOUT': 300,
+        }
+    }
+else:
+    # Development/Fallback: Use in-memory layers
+    CHANNEL_LAYERS = {
+        'default': {
+            'BACKEND': 'channels.layers.InMemoryChannelLayer'
+        }
+    }
+
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+            'LOCATION': 's2exchange-cache',
+            'OPTIONS': {
+                'MAX_ENTRIES': 1000,
+            }
+        }
+    }
 
 # Cache TTL settings
 CACHE_TTL_EXCHANGE_RATES = 60 * 5  # 5 minutes for exchange rates
