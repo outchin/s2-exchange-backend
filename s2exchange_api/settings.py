@@ -113,8 +113,6 @@ CACHES = {
         'LOCATION': REDIS_URL,
         'OPTIONS': {
             'db': 1,  # Use database 1 for cache (0 is for channels)
-            'parser_class': 'redis.connection.PythonParser',
-            'pool_class': 'redis.BlockingConnectionPool',
         },
         'KEY_PREFIX': 's2exchange',
         'TIMEOUT': 300,  # 5 minutes default timeout
