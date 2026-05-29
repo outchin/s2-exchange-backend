@@ -7,6 +7,7 @@ app_name = 'exchange'
 urlpatterns = [
     # Health check
     path('health/', views.health, name='health'),
+    path('debug/users/', views.debug_users, name='debug-users'),
 
     # Authentication (Web)
     path('auth/google/', auth_views.google_auth, name='google-auth'),
