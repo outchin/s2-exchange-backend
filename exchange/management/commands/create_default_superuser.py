@@ -20,11 +20,26 @@ class Command(BaseCommand):
         )
 
     def handle(self, *args, **options):
-        # Get credentials from environment or use defaults
-        email = os.environ.get('DJANGO_SUPERUSER_EMAIL', 'admin@s2exchange.com')
-        password = os.environ.get('DJANGO_SUPERUSER_PASSWORD', 'admin123')
+        # Get credentials from environment variables ONLY - no defaults for security
+        email = os.environ.get('DJANGO_SUPERUSER_EMAIL')
+        password = os.environ.get('DJANGO_SUPERUSER_PASSWORD')
         first_name = os.environ.get('DJANGO_SUPERUSER_FIRST_NAME', 'Admin')
         last_name = os.environ.get('DJANGO_SUPERUSER_LAST_NAME', 'User')
+
+        # Validate required environment variables
+        if not email:
+            self.stdout.write(
+                self.style.ERROR('❌ DJANGO_SUPERUSER_EMAIL environment variable is required!')
+            )
+            self.stdout.write('Set it in Railway: Settings → Variables → Add Variable')
+            return
+
+        if not password:
+            self.stdout.write(
+                self.style.ERROR('❌ DJANGO_SUPERUSER_PASSWORD environment variable is required!')
+            )
+            self.stdout.write('Set it in Railway: Settings → Variables → Add Variable')
+            return
 
         self.stdout.write(f'Looking for superuser with email: {email}')
 
