@@ -58,6 +58,7 @@ class ExchangeRateAdmin(admin.ModelAdmin):
     readonly_fields = ('last_updated', 'created_at', 'updated_at')
     actions = ('mark_online', 'mark_offline')
     inlines = []
+    list_select_related = ('currency',)  # Performance: Reduce database queries
 
     @admin.display(description='Trading')
     def trading_status(self, obj):
@@ -66,39 +67,19 @@ class ExchangeRateAdmin(admin.ModelAdmin):
     @admin.action(description='Mark selected rates online')
     def mark_online(self, request, queryset):
         queryset.update(is_active=True)
-        self._broadcast_rate_changes()
+        # Cache invalidation and broadcasting handled by signals
 
     @admin.action(description='Mark selected rates offline')
     def mark_offline(self, request, queryset):
         queryset.update(is_active=False)
-        self._broadcast_rate_changes()
+        # Cache invalidation and broadcasting handled by signals
 
-    def save_model(self, request, obj, form, change):
-        super().save_model(request, obj, form, change)
-        self._broadcast_rate_changes()
-
-    def _broadcast_rate_changes(self):
-        """Broadcast rate changes to all connected WebSocket clients"""
-        from .websocket_utils import broadcast_rate_update
-        rates = ExchangeRate.objects.filter(is_active=True).order_by('order')
-        rates_data = [
-            {
-                'id': rate.id,
-                'currency': rate.currency.code,
-                'buy_rate': float(rate.buy_rate),
-                'sell_rate': float(rate.sell_rate),
-                'last_updated': rate.last_updated.isoformat() if rate.last_updated else None,
-                'buy_tiers': rate.buy_tiers or [],
-                'sell_tiers': rate.sell_tiers or [],
-            }
-            for rate in rates
-        ]
-        broadcast_rate_update(rates_data)
+    # save_model removed - signals handle cache invalidation and broadcasting automatically
 
 
 class ExchangeRateTierInline(admin.TabularInline):
     model = ExchangeRateTier
-    extra = 1
+    extra = 0  # Don't show extra empty forms (performance)
     fields = (
         'direction',
         'min_amount',
@@ -107,6 +88,7 @@ class ExchangeRateTierInline(admin.TabularInline):
         'label',
         'is_active',
     )
+    ordering = ('sort_order', 'direction', 'min_amount')
 
 
 ExchangeRateAdmin.inlines = [ExchangeRateTierInline]
@@ -126,6 +108,7 @@ class ExchangeRateTierAdmin(SortableAdminMixin, admin.ModelAdmin):
     list_editable = ('rate', 'label', 'is_active')
     list_filter = ('direction', 'is_active', 'exchange_rate__currency')
     search_fields = ('exchange_rate__currency__code', 'label')
+    list_select_related = ('exchange_rate', 'exchange_rate__currency')  # Performance optimization
 
 
 @admin.register(ExchangeOrder)
