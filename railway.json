@@ -4,7 +4,7 @@
     "builder": "NIXPACKS"
   },
   "deploy": {
-    "preDeployCommand": "python manage.py migrate --noinput && python manage.py create_default_superuser && python manage.py seed_exchange_data",
+    "preDeployCommand": "python manage.py migrate --noinput && python manage.py create_default_superuser && python manage.py seed_exchange_data && python manage.py seed_communication_channels",
     "startCommand": "python manage.py collectstatic --noinput && daphne -b 0.0.0.0 -p $PORT s2exchange_api.asgi:application",
     "restartPolicyType": "ON_FAILURE",
     "restartPolicyMaxRetries": 10
