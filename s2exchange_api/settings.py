@@ -96,7 +96,8 @@ ASGI_APPLICATION = 's2exchange_api.asgi.application'
 REDIS_URL = os.environ.get('REDIS_URL', '')
 
 # Check if Redis is available (proper URL with host and port)
-USE_REDIS = REDIS_URL and REDIS_URL.startswith('redis://') and len(REDIS_URL) > 10
+# Valid Redis URL should have format: redis://host:port or redis://default:password@host:port
+USE_REDIS = REDIS_URL and REDIS_URL.startswith('redis://') and ':' in REDIS_URL[8:] and len(REDIS_URL) > 20
 
 if USE_REDIS:
     # Production: Use Redis for channels and cache
