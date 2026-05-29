@@ -190,6 +190,11 @@ else:
     ).split(',')
     CORS_ALLOW_CREDENTIALS = True
 
+# CSRF Settings for production
+CSRF_TRUSTED_ORIGINS = [
+    f'https://{host}' for host in ALLOWED_HOSTS if host not in ['localhost', '127.0.0.1', 'testserver']
+]
+
 # Google OAuth2 Settings
 GOOGLE_OAUTH2_CLIENT_ID = os.environ.get('GOOGLE_OAUTH2_CLIENT_ID', '')
 GOOGLE_OAUTH2_CLIENT_SECRET = os.environ.get('GOOGLE_OAUTH2_CLIENT_SECRET', '')
