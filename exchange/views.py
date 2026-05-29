@@ -19,37 +19,6 @@ def health(request):
 
 
 @require_GET
-def debug_users(request):
-    """Debug endpoint to check users in database (only in DEBUG mode)"""
-    from django.conf import settings
-    from .models import User
-
-    # Only allow in DEBUG mode or if secret key is provided
-    debug_key = request.GET.get('key')
-    if not settings.DEBUG and debug_key != 'check_admin_2024':
-        return JsonResponse({'error': 'Not authorized'}, status=403)
-
-    users = User.objects.all()
-    superusers = User.objects.filter(is_superuser=True)
-
-    return JsonResponse({
-        'total_users': users.count(),
-        'superusers': superusers.count(),
-        'users': [
-            {
-                'email': u.email,
-                'is_staff': u.is_staff,
-                'is_superuser': u.is_superuser,
-                'is_active': u.is_active,
-                'has_usable_password': u.has_usable_password(),
-                'created_at': u.created_at.isoformat() if u.created_at else None,
-            }
-            for u in users
-        ]
-    })
-
-
-@require_GET
 def rate_list(request):
     rates = (
         ExchangeRate.objects.select_related('currency')
