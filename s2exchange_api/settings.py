@@ -92,12 +92,37 @@ TEMPLATES = [
 WSGI_APPLICATION = 's2exchange_api.wsgi.application'
 ASGI_APPLICATION = 's2exchange_api.asgi.application'
 
-# Channels configuration
+# Channels configuration with Redis
+REDIS_URL = os.environ.get('REDIS_URL', 'redis://localhost:6379')
+
 CHANNEL_LAYERS = {
     'default': {
-        'BACKEND': 'channels.layers.InMemoryChannelLayer'
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [REDIS_URL],
+            'capacity': 1500,  # Max messages to queue per channel
+            'expiry': 10,  # Message expiry in seconds
+        },
+    },
+}
+
+# Redis Cache Configuration
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+        'LOCATION': REDIS_URL,
+        'OPTIONS': {
+            'db': 1,  # Use database 1 for cache (0 is for channels)
+            'parser_class': 'redis.connection.PythonParser',
+            'pool_class': 'redis.BlockingConnectionPool',
+        },
+        'KEY_PREFIX': 's2exchange',
+        'TIMEOUT': 300,  # 5 minutes default timeout
     }
 }
+
+# Cache TTL settings
+CACHE_TTL_EXCHANGE_RATES = 60 * 5  # 5 minutes for exchange rates
 
 
 # Database

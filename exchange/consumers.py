@@ -1,7 +1,7 @@
 import json
 from channels.generic.websocket import AsyncWebsocketConsumer
-from channels.db import database_sync_to_async
-from .models import ExchangeRate
+from asgiref.sync import sync_to_async
+from .cache import get_cached_exchange_rates
 
 
 class ExchangeRateConsumer(AsyncWebsocketConsumer):
@@ -70,10 +70,9 @@ class ExchangeRateConsumer(AsyncWebsocketConsumer):
             'rates': rates
         }))
 
-    @database_sync_to_async
-    def get_current_rates(self):
+    async def get_current_rates(self):
         """
-        Fetch current exchange rates from database.
+        Fetch current exchange rates from Redis cache.
+        Falls back to database if cache miss.
         """
-        rates = ExchangeRate.objects.filter(is_active=True).select_related('currency').prefetch_related('tiers').order_by('currency__sort_order')
-        return [rate.to_api_dict() for rate in rates]
+        return await sync_to_async(get_cached_exchange_rates)()

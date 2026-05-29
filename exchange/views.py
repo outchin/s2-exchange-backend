@@ -7,6 +7,7 @@ from django.views.decorators.http import require_GET, require_http_methods
 
 from .models import Currency, ExchangeOrder, ExchangeRate, ExchangeRateTier
 from .services import sync_rate_to_realtime_database
+from .cache import get_cached_exchange_rates
 
 
 def _error(message, status=400):
@@ -20,11 +21,12 @@ def health(request):
 
 @require_GET
 def rate_list(request):
-    rates = (
-        ExchangeRate.objects.select_related('currency')
-        .filter(is_active=True, currency__is_active=True)
-    )
-    return JsonResponse([rate.to_api_dict() for rate in rates], safe=False)
+    """
+    Get all active exchange rates from Redis cache.
+    Cache miss will fetch from database and populate cache.
+    """
+    rates = get_cached_exchange_rates()
+    return JsonResponse(rates, safe=False)
 
 
 @require_GET
