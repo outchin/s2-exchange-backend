@@ -227,11 +227,12 @@ class ExchangeRateTier(models.Model):
     rate = models.DecimalField(max_digits=16, decimal_places=4)
     label = models.CharField(max_length=120, blank=True)
     is_active = models.BooleanField(default=True)
+    sort_order = models.PositiveIntegerField(default=0, db_index=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ['direction', 'min_amount']
+        ordering = ['sort_order', 'direction', 'min_amount']
         constraints = [
             models.UniqueConstraint(
                 fields=['exchange_rate', 'direction', 'min_amount', 'max_amount'],

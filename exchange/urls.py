@@ -17,6 +17,7 @@ urlpatterns = [
     path('auth/google/mobile/', auth_views.google_auth_mobile, name='google-auth-mobile'),
     path('auth/user/mobile/', auth_views.current_user_mobile, name='current-user-mobile'),
     path('auth/logout/mobile/', auth_views.logout_mobile, name='logout-mobile'),
+    path('auth/delete-account/mobile/', auth_views.delete_account_mobile, name='delete-account-mobile'),
 
     # Exchange rates
     path('rates/', views.rate_list, name='rate-list'),

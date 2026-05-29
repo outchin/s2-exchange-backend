@@ -1,0 +1,152 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+{% block nav_home %}active{% endblock %}
+
+{% block content %}
+<!-- Hero Section with Phone Mockup -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-grid">
+            <div class="hero-content">
+                <h1>ကြိုဆိုပါတယ် S2 Exchange သို့</h1>
+                <p class="hero-subtitle">ယုံကြည်စိတ်ချရသော ငွေလဲလှယ်ရေးနှင့် ထိုင်းထီဝန်ဆောင်မှု</p>
+                <p class="hero-description">အချိန်နှင့်တစ်ပြေးညီ ငွေလဲနှုန်းများကို မိုဘိုင်းအက်ပ်မှတစ်ဆင့် ကြည့်ရှုနိုင်ပါပြီ</p>
+                <div class="hero-buttons">
+                    <a href="#download" class="btn btn-primary">အခုပဲ ဒေါင်းလုဒ်လုပ်ပါ</a>
+                    <a href="/about/" class="btn btn-secondary">ပိုမိုသိရှိရန်</a>
+                </div>
+            </div>
+
+            <!-- Phone Mockup with Real Rates -->
+            <div class="phone-mockup">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <div class="phone-header">
+                            <div class="phone-time">9:41</div>
+                            <div class="phone-icons">📶 📡 🔋</div>
+                        </div>
+
+                        <div class="phone-app-header">
+                            <h2>S2 Exchange</h2>
+                            <p>ငွေလဲလှယ်ရေးနှင့် ထိုင်းထီ</p>
+                        </div>
+
+                        <div class="phone-tabs">
+                            <div class="phone-tab active">ငွေလဲနှုန်း</div>
+                            <div class="phone-tab">ထိုင်းထီ</div>
+                        </div>
+
+                        <div id="phone-rates-container" class="phone-rates">
+                            <div class="phone-loading">
+                                <div class="spinner-small"></div>
+                                <p>Loading...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>ကျွန်ုပ်တို့၏ ဝန်ဆောင်မှုများ</h2>
+            <p>လုံခြုံ၊ မြန်ဆန်၊ စိတ်ချရသော ဝန်ဆောင်မှုများ</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">💱</div>
+                <h3>ငွေလဲလှယ်ခြင်း</h3>
+                <p>အချိန်နှင့်တစ်ပြေးညီ ငွေလဲနှုန်းများဖြင့် မြန်ဆန်စွာ လဲလှယ်နိုင်ပါသည်</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎫</div>
+                <h3>ထိုင်းထီ</h3>
+                <p>ထိုင်းထီလက်မှတ်များကို အွန်လိုင်းမှတစ်ဆင့် အလွယ်တကူ ဝယ်ယူနိုင်ပါသည်</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3>မိုဘိုင်းအက်ပ်</h3>
+                <p>Android နှင့် iOS အတွက် အသုံးပြုရလွယ်ကူသော မိုဘိုင်းအက်ပ်</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>လုံခြုံစိတ်ချရမှု</h3>
+                <p>သင့်ငွေကြေးနှင့် အချက်အလက်များ လုံခြုံစိတ်ချစွာ ကာကွယ်ထားပါသည်</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Full Exchange Rates Section -->
+<section id="rates" class="rates-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>ယနေ့ ငွေလဲနှုန်း</h2>
+            <p>အချိန်နှင့်တစ်ပြေးညီ အပ်ဒိတ်လုပ်ထားသော ငွေလဲနှုန်းများ</p>
+        </div>
+
+        <div id="full-rates-loading" class="loading">
+            <div class="spinner"></div>
+            <p>ငွေလဲနှုန်းများ ရယူနေသည်...</p>
+        </div>
+
+        <div id="full-rates-container" class="rates-grid" style="display: none;">
+            <!-- Exchange rates will be loaded here via JavaScript -->
+        </div>
+
+        <div id="rates-error" class="error-message" style="display: none;">
+            <p>ငွေလဲနှုန်းများ ရယူ၍မရပါ။ ခဏနောက် ထပ်မံကြိုးစားပါ။</p>
+        </div>
+
+        <div class="rates-note">
+            <p>* ငွေလဲနှုန်းများသည် အချိန်နှင့်အမျှ ပြောင်းလဲနိုင်ပါသည်။</p>
+            <p>* ပိုမိုတိကျသော ငွေလဲနှုန်းအတွက် ကျွန်ုပ်တို့၏ မိုဘိုင်းအက်ပ်ကို အသုံးပြုပါ။</p>
+        </div>
+    </div>
+</section>
+
+<!-- Download Section -->
+<section id="download" class="download-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>S2 Exchange အက်ပ်ကို ဒေါင်းလုဒ်လုပ်ပါ</h2>
+            <p>လက်ချက်လက်ငင်း ငွေလဲနှုန်းများ၊ ထိုင်းထီဝယ်ယူခြင်းနှင့် အခြားများကို သင့်ဖုန်းမှ ရယူနိုင်ပါသည်</p>
+        </div>
+        <div class="download-buttons-large">
+            <a href="#" class="download-btn-large android">
+                <div class="btn-icon">📱</div>
+                <div class="btn-text">
+                    <span class="small">GET IT ON</span>
+                    <span class="large">Google Play</span>
+                </div>
+            </a>
+            <a href="#" class="download-btn-large ios">
+                <div class="btn-icon">🍎</div>
+                <div class="btn-text">
+                    <span class="small">Download on the</span>
+                    <span class="large">App Store</span>
+                </div>
+            </a>
+        </div>
+        <div class="qr-codes">
+            <div class="qr-code">
+                <div class="qr-placeholder">QR</div>
+                <p>Android</p>
+            </div>
+            <div class="qr-code">
+                <div class="qr-placeholder">QR</div>
+                <p>iOS</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'website/js/rates.js' %}"></script>
+{% endblock %}

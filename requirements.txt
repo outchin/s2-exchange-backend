@@ -7,6 +7,11 @@ google-auth-oauthlib==1.2.1
 google-auth-httplib2==0.2.0
 django-cors-headers==4.6.0
 
+# WebSocket support
+channels==4.0.0
+channels-redis==4.2.0
+daphne==4.1.0
+
 # Production dependencies
 gunicorn==22.0.0
 psycopg2-binary==2.9.9

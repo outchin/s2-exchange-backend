@@ -43,15 +43,19 @@ ALLOWED_HOSTS = os.environ.get(
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',  # Must be first for WebSocket support
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'adminsortable2',
     'rest_framework',
     'corsheaders',
+    'channels',
     'exchange',
+    'website',
 ]
 
 MIDDLEWARE = [
@@ -71,19 +75,29 @@ ROOT_URLCONF = 's2exchange_api.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'website' / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.static',
             ],
         },
     },
 ]
 
 WSGI_APPLICATION = 's2exchange_api.wsgi.application'
+ASGI_APPLICATION = 's2exchange_api.asgi.application'
+
+# Channels configuration
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer'
+    }
+}
 
 
 # Database
@@ -164,12 +178,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'exchange.User'
 
 # CORS Settings
-CORS_ALLOWED_ORIGINS = os.environ.get(
-    'CORS_ALLOWED_ORIGINS',
-    'http://localhost:3000,http://localhost:8080',
-).split(',')
-
-CORS_ALLOW_CREDENTIALS = True
+if DEBUG:
+    # Development: Allow all origins for Flutter/React Native/Web clients
+    CORS_ALLOW_ALL_ORIGINS = True
+    CORS_ALLOW_CREDENTIALS = True
+else:
+    # Production: Restrict to specific origins
+    CORS_ALLOWED_ORIGINS = os.environ.get(
+        'CORS_ALLOWED_ORIGINS',
+        'http://localhost:3000,http://localhost:8080',
+    ).split(',')
+    CORS_ALLOW_CREDENTIALS = True
 
 # Google OAuth2 Settings
 GOOGLE_OAUTH2_CLIENT_ID = os.environ.get('GOOGLE_OAUTH2_CLIENT_ID', '')

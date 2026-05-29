@@ -1,0 +1,141 @@
+{% extends 'website/base.html' %}
+
+{% block title %}Contact Us - S2 Exchange{% endblock %}
+{% block nav_contact %}active{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container">
+        <h1>ဆက်သွယ်ရန်</h1>
+        <p>ကျွန်ုပ်တို့နှင့် ဆက်သွယ်လိုပါက အောက်ပါနည်းလမ်းများဖြင့် ဆက်သွယ်နိုင်ပါသည်</p>
+    </div>
+</section>
+
+<!-- Contact Content -->
+<section class="content-section">
+    <div class="container">
+        <div class="contact-grid">
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <h2>ဆက်သွယ်ရန် အချက်အလက်များ</h2>
+
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-details">
+                        <h3>လိပ်စာ</h3>
+                        <p>Yangon, Myanmar</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-details">
+                        <h3>ဖုန်းနံပါတ်</h3>
+                        <p>+95 9 123 456 789</p>
+                        <p>+95 9 987 654 321</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <div class="contact-details">
+                        <h3>အီးမေးလ်</h3>
+                        <p>info@s2exchange.com</p>
+                        <p>support@s2exchange.com</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">🕐</div>
+                    <div class="contact-details">
+                        <h3>လုပ်ငန်းချိန်</h3>
+                        <p>တနင်္လာ - စနေ: 9:00 AM - 6:00 PM</p>
+                        <p>တနင်္ဂနွေ: ပိတ်ရက်</p>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <h3>လူမှုကွန်ယက်များတွင် ကျွန်ုပ်တို့ကို လိုက်ကြည့်ပါ</h3>
+                    <div class="social-buttons">
+                        <a href="#" class="social-btn facebook">Facebook</a>
+                        <a href="#" class="social-btn telegram">Telegram</a>
+                        <a href="#" class="social-btn viber">Viber</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form-container">
+                <h2>မက်ဆေ့ချ်ပို့ရန်</h2>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">အမည်</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">အီးမေးလ်</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">ဖုန်းနံပါတ်</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">ခေါင်းစဉ်</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">ရွေးချယ်ပါ</option>
+                            <option value="exchange">ငွေလဲလှယ်ရေးအကြောင်း</option>
+                            <option value="lottery">ထိုင်းထီအကြောင်း</option>
+                            <option value="app">အက်ပ်အကြောင်း</option>
+                            <option value="other">အခြား</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">မက်ဆေ့ချ်</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">ပို့ရန်</button>
+                </form>
+
+                <div id="form-message" class="form-message" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Map Section (Optional) -->
+<section class="map-section">
+    <div class="container">
+        <h2>ကျွန်ုပ်တို့၏ တည်နေရာ</h2>
+        <div class="map-placeholder">
+            <p>🗺️ Map will be integrated here</p>
+            <p>Yangon, Myanmar</p>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const formMessage = document.getElementById('form-message');
+    formMessage.style.display = 'block';
+    formMessage.className = 'form-message success';
+    formMessage.textContent = 'သင့်မက်ဆေ့ချ်ကို လက်ခံရရှိပါပြီ။ ကျွန်ုပ်တို့မှ မကြာမီ ပြန်လည်ဆက်သွယ်ပါမည်။';
+
+    this.reset();
+
+    setTimeout(() => {
+        formMessage.style.display = 'none';
+    }, 5000);
+});
+</script>
+{% endblock %}

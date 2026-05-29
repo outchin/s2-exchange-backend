@@ -324,3 +324,72 @@ def current_user_mobile(request):
         'success': True,
         'user': UserSerializer(request.user).data,
     })
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def delete_account_mobile(request):
+    """
+    Delete user account permanently (hard delete)
+    Required by Google Play Store and App Store policies
+
+    POST /api/auth/delete-account/mobile/
+    {
+        "device_id": "unique_device_id",
+        "confirmation": "DELETE"
+    }
+
+    Returns:
+    {
+        "success": true,
+        "message": "Account deleted successfully"
+    }
+    """
+    device_id = request.data.get('device_id')
+    confirmation = request.data.get('confirmation')
+
+    # Require explicit confirmation
+    if confirmation != 'DELETE':
+        return Response(
+            {
+                'success': False,
+                'error': 'Please confirm account deletion by sending "DELETE" as confirmation'
+            },
+            status=status.HTTP_400_BAD_REQUEST
+        )
+
+    user = request.user
+
+    try:
+        # Log the deletion for audit purposes
+        from django.utils import timezone
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.info(f'Account deletion requested - User ID: {user.id}, Email: {user.email}, Device: {device_id}, Time: {timezone.now()}')
+
+        # Deactivate all user devices first
+        UserDevice.objects.filter(user=user).update(is_active=False)
+
+        # Hard delete the user account and all related data
+        # Django's CASCADE will automatically delete related UserDevice records
+        user.delete()
+
+        logger.info(f'Account deleted successfully - Email: {user.email}')
+
+        return Response({
+            'success': True,
+            'message': 'Your account has been permanently deleted. All your data has been removed from our servers.'
+        })
+
+    except Exception as e:
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.error(f'Account deletion failed - User ID: {user.id}, Error: {str(e)}')
+
+        return Response(
+            {
+                'success': False,
+                'error': f'Failed to delete account: {str(e)}'
+            },
+            status=status.HTTP_500_INTERNAL_SERVER_ERROR
+        )

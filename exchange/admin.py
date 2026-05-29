@@ -4,6 +4,7 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.shortcuts import redirect
 from django.template.response import TemplateResponse
 from django.urls import path
+from adminsortable2.admin import SortableAdminMixin
 
 from .forms import LotteryTicketCsvImportForm
 from .lottery_import import import_lottery_tickets_from_csv
@@ -65,10 +66,34 @@ class ExchangeRateAdmin(admin.ModelAdmin):
     @admin.action(description='Mark selected rates online')
     def mark_online(self, request, queryset):
         queryset.update(is_active=True)
+        self._broadcast_rate_changes()
 
     @admin.action(description='Mark selected rates offline')
     def mark_offline(self, request, queryset):
         queryset.update(is_active=False)
+        self._broadcast_rate_changes()
+
+    def save_model(self, request, obj, form, change):
+        super().save_model(request, obj, form, change)
+        self._broadcast_rate_changes()
+
+    def _broadcast_rate_changes(self):
+        """Broadcast rate changes to all connected WebSocket clients"""
+        from .websocket_utils import broadcast_rate_update
+        rates = ExchangeRate.objects.filter(is_active=True).order_by('order')
+        rates_data = [
+            {
+                'id': rate.id,
+                'currency': rate.currency.code,
+                'buy_rate': float(rate.buy_rate),
+                'sell_rate': float(rate.sell_rate),
+                'last_updated': rate.last_updated.isoformat() if rate.last_updated else None,
+                'buy_tiers': rate.buy_tiers or [],
+                'sell_tiers': rate.sell_tiers or [],
+            }
+            for rate in rates
+        ]
+        broadcast_rate_update(rates_data)
 
 
 class ExchangeRateTierInline(admin.TabularInline):
@@ -88,7 +113,7 @@ ExchangeRateAdmin.inlines = [ExchangeRateTierInline]
 
 
 @admin.register(ExchangeRateTier)
-class ExchangeRateTierAdmin(admin.ModelAdmin):
+class ExchangeRateTierAdmin(SortableAdminMixin, admin.ModelAdmin):
     list_display = (
         'exchange_rate',
         'direction',

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="S2 Exchange - ငွေလဲလှယ်ရေးနှင့် ထိုင်းထီဝန်ဆောင်မှု">
+    <title>{% block title %}S2 Exchange - ငွေလဲလှယ်ရေးနှင့် ထိုင်းထီ{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'website/css/style.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>S2 Exchange</h1>
+                <p>ငွေလဲလှယ်ရေးနှင့် ထိုင်းထီ</p>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="/" class="{% block nav_home %}{% endblock %}">ပင်မစာမျက်နှာ</a></li>
+                <li><a href="/about/" class="{% block nav_about %}{% endblock %}">ကျွန်ုပ်တို့အကြောင်း</a></li>
+                <li><a href="/contact/" class="{% block nav_contact %}{% endblock %}">ဆက်သွယ်ရန်</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>S2 Exchange</h3>
+                    <p>ယုံကြည်စိတ်ချရသော ငွေလဲလှယ်ရေးနှင့် ထိုင်းထီဝန်ဆောင်မှု</p>
+                </div>
+                <div class="footer-section">
+                    <h3>လင့်များ</h3>
+                    <ul>
+                        <li><a href="/">ပင်မစာမျက်နှာ</a></li>
+                        <li><a href="/about/">ကျွန်ုပ်တို့အကြောင်း</a></li>
+                        <li><a href="/contact/">ဆက်သွယ်ရန်</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>App ဒေါင်းလုဒ်</h3>
+                    <div class="download-buttons">
+                        <a href="#" class="download-btn android">
+                            <span class="icon">📱</span>
+                            <span>Android</span>
+                        </a>
+                        <a href="#" class="download-btn ios">
+                            <span class="icon">🍎</span>
+                            <span>iOS</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 S2 Exchange. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
