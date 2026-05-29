@@ -29,7 +29,7 @@ Django REST API backend for S2Exchange mobile application with real-time WebSock
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/hninsunyein/s2-exchange-backend.git
+   git clone https://github.com/outchin/s2-exchange-backend.git
    cd s2-exchange-backend
    ```
 
@@ -247,7 +247,7 @@ This project is proprietary and confidential.
 ## Support
 
 For issues and questions:
-- GitHub Issues: https://github.com/hninsunyein/s2-exchange-backend/issues
+- GitHub Issues: https://github.com/outchin/s2-exchange-backend/issues
 - Email: support@s2exchange.com
 
 ## Acknowledgments

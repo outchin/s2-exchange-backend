@@ -12,7 +12,7 @@
 
 1. Go to https://railway.app/new
 2. Click "Deploy from GitHub repo"
-3. Select `hninsunyein/s2-exchange-backend`
+3. Select `outchin/s2-exchange-backend`
 4. Railway will automatically detect Django and start deployment
 
 ### 2. Add PostgreSQL Database
@@ -200,4 +200,4 @@ Railway pricing:
 
 - Railway Documentation: https://docs.railway.app
 - Railway Discord: https://discord.gg/railway
-- Project GitHub: https://github.com/hninsunyein/s2-exchange-backend
+- Project GitHub: https://github.com/outchin/s2-exchange-backend
