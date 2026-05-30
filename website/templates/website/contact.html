@@ -1,14 +1,15 @@
 {% extends 'website/base.html' %}
+{% load i18n %}
 
-{% block title %}Contact Us - S2 Exchange{% endblock %}
+{% block title %}{% trans "Contact Us" %} - S2 Exchange{% endblock %}
 {% block nav_contact %}active{% endblock %}
 
 {% block content %}
 <!-- Page Header -->
 <section class="page-header">
     <div class="container">
-        <h1>ဆက်သွယ်ရန်</h1>
-        <p>ကျွန်ုပ်တို့နှင့် ဆက်သွယ်လိုပါက အောက်ပါနည်းလမ်းများဖြင့် ဆက်သွယ်နိုင်ပါသည်</p>
+        <h1>{% trans "Contact Us" %}</h1>
+        <p>{% trans "Get in touch with us using the following methods" %}</p>
     </div>
 </section>
 
@@ -18,7 +19,7 @@
         <div class="contact-grid">
             <!-- Contact Information -->
             <div class="contact-info">
-                <h2>ဆက်သွယ်ရန် အချက်အလက်များ</h2>
+                <h2>{% trans "Contact Information" %}</h2>
 
                 <div class="contact-item">
                     <div class="contact-icon">
@@ -72,7 +73,7 @@
                 </div>
 
                 <div class="social-links">
-                    <h3>လူမှုကွန်ယက်များတွင် ကျွန်ုပ်တို့ကို လိုက်ကြည့်ပါ</h3>
+                    <h3>{% trans "Follow us on social media" %}</h3>
                     <div class="social-buttons">
                         <a href="#" class="social-btn facebook">
                             <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
@@ -98,40 +99,40 @@
 
             <!-- Contact Form -->
             <div class="contact-form-container">
-                <h2>မက်ဆေ့ချ်ပို့ရန်</h2>
+                <h2>{% trans "Send us a message" %}</h2>
                 <form class="contact-form" id="contactForm">
                     <div class="form-group">
-                        <label for="name">အမည်</label>
+                        <label for="name">{% trans "Name" %}</label>
                         <input type="text" id="name" name="name" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="email">အီးမေးလ်</label>
+                        <label for="email">{% trans "Email" %}</label>
                         <input type="email" id="email" name="email" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="phone">ဖုန်းနံပါတ်</label>
+                        <label for="phone">{% trans "Phone Number" %}</label>
                         <input type="tel" id="phone" name="phone">
                     </div>
 
                     <div class="form-group">
-                        <label for="subject">ခေါင်းစဉ်</label>
+                        <label for="subject">{% trans "Subject" %}</label>
                         <select id="subject" name="subject" required>
-                            <option value="">ရွေးချယ်ပါ</option>
-                            <option value="exchange">ငွေလဲလှယ်ရေးအကြောင်း</option>
-                            <option value="lottery">ထိုင်းထီအကြောင်း</option>
-                            <option value="app">အက်ပ်အကြောင်း</option>
-                            <option value="other">အခြား</option>
+                            <option value="">{% trans "Select" %}</option>
+                            <option value="exchange">{% trans "Currency Exchange" %}</option>
+                            <option value="lottery">{% trans "Thai Lottery" %}</option>
+                            <option value="app">{% trans "Mobile App" %}</option>
+                            <option value="other">{% trans "Other" %}</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="message">မက်ဆေ့ချ်</label>
+                        <label for="message">{% trans "Message" %}</label>
                         <textarea id="message" name="message" rows="5" required></textarea>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">ပို့ရန်</button>
+                    <button type="submit" class="btn btn-primary">{% trans "Send" %}</button>
                 </form>
 
                 <div id="form-message" class="form-message" style="display: none;"></div>
@@ -163,7 +164,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     const formMessage = document.getElementById('form-message');
     formMessage.style.display = 'block';
     formMessage.className = 'form-message success';
-    formMessage.textContent = 'သင့်မက်ဆေ့ချ်ကို လက်ခံရရှိပါပြီ။ ကျွန်ုပ်တို့မှ မကြာမီ ပြန်လည်ဆက်သွယ်ပါမည်။';
+    formMessage.textContent = '{% trans "Thank you! We have received your message and will get back to you soon." %}';
 
     this.reset();
 

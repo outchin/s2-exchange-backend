@@ -1,10 +1,11 @@
+{% load i18n %}
 <!DOCTYPE html>
-<html lang="my">
+<html lang="{% get_current_language as LANGUAGE_CODE %}{{ LANGUAGE_CODE }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="S2 Exchange - ငွေလဲလှယ်ရေးနှင့် ထိုင်းထီဝန်ဆောင်မှု">
-    <title>{% block title %}S2 Exchange - ငွေလဲလှယ်ရေးနှင့် ထိုင်းထီ{% endblock %}</title>
+    <meta name="description" content="{% trans "S2 Exchange - Currency exchange and Thai lottery services" %}">
+    <title>{% block title %}{% trans "S2 Exchange - Currency Exchange & Thai Lottery" %}{% endblock %}</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'website/css/style.css' %}">
     {% block extra_css %}{% endblock %}
@@ -15,12 +16,12 @@
         <div class="container">
             <div class="nav-brand">
                 <h1>S2 Exchange</h1>
-                <p>ငွေလဲလှယ်ရေးနှင့် ထိုင်းထီ</p>
+                <p>{% trans "Currency Exchange & Thai Lottery" %}</p>
             </div>
             <ul class="nav-menu">
-                <li><a href="/" class="{% block nav_home %}{% endblock %}">ပင်မစာမျက်နှာ</a></li>
-                <li><a href="/about/" class="{% block nav_about %}{% endblock %}">ကျွန်ုပ်တို့အကြောင်း</a></li>
-                <li><a href="/contact/" class="{% block nav_contact %}{% endblock %}">ဆက်သွယ်ရန်</a></li>
+                <li><a href="/" class="{% block nav_home %}{% endblock %}">{% trans "Home" %}</a></li>
+                <li><a href="/about/" class="{% block nav_about %}{% endblock %}">{% trans "About Us" %}</a></li>
+                <li><a href="/contact/" class="{% block nav_contact %}{% endblock %}">{% trans "Contact" %}</a></li>
             </ul>
         </div>
     </nav>
@@ -36,32 +37,36 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>S2 Exchange</h3>
-                    <p>ယုံကြည်စိတ်ချရသော ငွေလဲလှယ်ရေးနှင့် ထိုင်းထီဝန်ဆောင်မှု</p>
+                    <p>{% trans "Reliable currency exchange and Thai lottery services" %}</p>
                 </div>
                 <div class="footer-section">
-                    <h3>လင့်များ</h3>
+                    <h3>{% trans "Links" %}</h3>
                     <ul>
-                        <li><a href="/">ပင်မစာမျက်နှာ</a></li>
-                        <li><a href="/about/">ကျွန်ုပ်တို့အကြောင်း</a></li>
-                        <li><a href="/contact/">ဆက်သွယ်ရန်</a></li>
+                        <li><a href="/">{% trans "Home" %}</a></li>
+                        <li><a href="/about/">{% trans "About Us" %}</a></li>
+                        <li><a href="/contact/">{% trans "Contact" %}</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>App ဒေါင်းလုဒ်</h3>
+                    <h3>{% trans "Download App" %}</h3>
                     <div class="download-buttons">
                         <a href="#" class="download-btn android">
-                            <span class="icon">📱</span>
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                                <path d="M17 1.01L7 1C5.9 1 5 1.9 5 3V21C5 22.1 5.9 23 7 23H17C18.1 23 19 22.1 19 21V3C19 1.9 18.1 1.01 17 1.01ZM17 19H7V5H17V19Z"/>
+                            </svg>
                             <span>Android</span>
                         </a>
                         <a href="#" class="download-btn ios">
-                            <span class="icon">🍎</span>
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                                <path d="M17.05 20.28C16.05 21.23 14.97 21.17 13.93 20.67C12.83 20.16 11.84 20.14 10.68 20.67C9.24 21.34 8.47 21.25 7.59 20.28C3.97 16.54 4.47 10.73 8.62 10.5C9.67 10.56 10.39 11.14 11 11.19C12 11 12.97 10.39 14.12 10.46C15.51 10.56 16.59 11.11 17.3 12.12C14.31 13.81 15.03 18.08 17.05 20.28ZM14.03 7.26C13.88 5.02 15.69 3.18 17.81 3C18.09 5.58 15.44 7.5 14.03 7.26Z"/>
+                            </svg>
                             <span>iOS</span>
                         </a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 S2 Exchange. All rights reserved.</p>
+                <p>&copy; 2024 S2 Exchange. {% trans "All rights reserved." %}</p>
             </div>
         </div>
     </footer>

@@ -1,5 +1,6 @@
 {% extends 'website/base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block nav_home %}active{% endblock %}
 
@@ -9,12 +10,12 @@
     <div class="container">
         <div class="hero-grid">
             <div class="hero-content">
-                <h1>ကြိုဆိုပါတယ် S2 Exchange သို့</h1>
-                <p class="hero-subtitle">ယုံကြည်စိတ်ချရသော ငွေလဲလှယ်ရေးနှင့် ထိုင်းထီဝန်ဆောင်မှု</p>
-                <p class="hero-description">အချိန်နှင့်တစ်ပြေးညီ ငွေလဲနှုန်းများကို မိုဘိုင်းအက်ပ်မှတစ်ဆင့် ကြည့်ရှုနိုင်ပါပြီ</p>
+                <h1>{% trans "Welcome to S2 Exchange" %}</h1>
+                <p class="hero-subtitle">{% trans "Reliable currency exchange and Thai lottery services" %}</p>
+                <p class="hero-description">{% trans "Access real-time exchange rates through our mobile application" %}</p>
                 <div class="hero-buttons">
-                    <a href="#download" class="btn btn-primary">အခုပဲ ဒေါင်းလုဒ်လုပ်ပါ</a>
-                    <a href="/about/" class="btn btn-secondary">ပိုမိုသိရှိရန်</a>
+                    <a href="#download" class="btn btn-primary">{% trans "Download Now" %}</a>
+                    <a href="/about/" class="btn btn-secondary">{% trans "Learn More" %}</a>
                 </div>
             </div>
 
@@ -41,12 +42,12 @@
 
                         <div class="phone-app-header">
                             <h2>S2 Exchange</h2>
-                            <p>ငွေလဲလှယ်ရေးနှင့် ထိုင်းထီ</p>
+                            <p>{% trans "Currency Exchange & Thai Lottery" %}</p>
                         </div>
 
                         <div class="phone-tabs">
-                            <div class="phone-tab active">ငွေလဲနှုန်း</div>
-                            <div class="phone-tab">ထိုင်းထီ</div>
+                            <div class="phone-tab active">{% trans "Exchange Rates" %}</div>
+                            <div class="phone-tab">{% trans "Thai Lottery" %}</div>
                         </div>
 
                         <div id="phone-rates-container" class="phone-rates">
@@ -66,8 +67,8 @@
 <section class="features-section">
     <div class="container">
         <div class="section-header">
-            <h2>ကျွန်ုပ်တို့၏ ဝန်ဆောင်မှုများ</h2>
-            <p>လုံခြုံ၊ မြန်ဆန်၊ စိတ်ချရသော ဝန်ဆောင်မှုများ</p>
+            <h2>{% trans "Our Services" %}</h2>
+            <p>{% trans "Secure, fast, and reliable services" %}</p>
         </div>
         <div class="features-grid">
             <div class="feature-card">
@@ -76,8 +77,8 @@
                         <path d="M12.89 3L14.85 3.4L11.11 21L9.15 20.6L12.89 3ZM19 8V11H22V13H19V16L15 12L19 8ZM5 8L9 12L5 16V13H2V11H5V8Z" fill="#D32F2F"/>
                     </svg>
                 </div>
-                <h3>Currency Exchange</h3>
-                <p>အချိန်နှင့်တစ်ပြေးညီ ငွေလဲနှုန်းများဖြင့် မြန်ဆန်စွာ လဲလှယ်နိုင်ပါသည်</p>
+                <h3>{% trans "Currency Exchange" %}</h3>
+                <p>{% trans "Exchange currencies quickly with real-time rates" %}</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">
@@ -85,8 +86,8 @@
                         <path d="M4 4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4H4ZM4 6H20V10H4V6ZM4 12H20V18H4V12ZM6 14V16H10V14H6Z" fill="#D32F2F"/>
                     </svg>
                 </div>
-                <h3>Thai Lottery</h3>
-                <p>ထိုင်းထီလက်မှတ်များကို အွန်လိုင်းမှတစ်ဆင့် အလွယ်တကူ ဝယ်ယူနိုင်ပါသည်</p>
+                <h3>{% trans "Thai Lottery" %}</h3>
+                <p>{% trans "Purchase Thai lottery tickets easily online" %}</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">
@@ -94,8 +95,8 @@
                         <path d="M17 1.01L7 1C5.9 1 5 1.9 5 3V21C5 22.1 5.9 23 7 23H17C18.1 23 19 22.1 19 21V3C19 1.9 18.1 1.01 17 1.01ZM17 19H7V5H17V19Z" fill="#D32F2F"/>
                     </svg>
                 </div>
-                <h3>Mobile App</h3>
-                <p>Android နှင့် iOS အတွက် အသုံးပြုရလွယ်ကူသော Mobile Application</p>
+                <h3>{% trans "Mobile App" %}</h3>
+                <p>{% trans "User-friendly mobile application for Android and iOS" %}</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">
@@ -103,8 +104,8 @@
                         <path d="M18 8H17V6C17 3.24 14.76 1 12 1C9.24 1 7 3.24 7 6V8H6C4.9 8 4 8.9 4 10V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V10C20 8.9 19.1 8 18 8ZM12 17C10.9 17 10 16.1 10 15C10 13.9 10.9 13 12 13C13.1 13 14 13.9 14 15C14 16.1 13.1 17 12 17ZM15.1 8H8.9V6C8.9 4.29 10.29 2.9 12 2.9C13.71 2.9 15.1 4.29 15.1 6V8Z" fill="#D32F2F"/>
                     </svg>
                 </div>
-                <h3>Security</h3>
-                <p>သင့်ငွေကြေးနှင့် အချက်အလက်များ လုံခြုံစိတ်ချစွာ ကာကွယ်ထားပါသည်</p>
+                <h3>{% trans "Security" %}</h3>
+                <p>{% trans "Your money and data are protected securely" %}</p>
             </div>
         </div>
     </div>
@@ -114,13 +115,13 @@
 <section id="rates" class="rates-section">
     <div class="container">
         <div class="section-header">
-            <h2>ယနေ့ ငွေလဲနှုန်း</h2>
-            <p>အချိန်နှင့်တစ်ပြေးညီ အပ်ဒိတ်လုပ်ထားသော ငွေလဲနှုန်းများ</p>
+            <h2>{% trans "Today's Exchange Rates" %}</h2>
+            <p>{% trans "Real-time updated currency exchange rates" %}</p>
         </div>
 
         <div id="full-rates-loading" class="loading">
             <div class="spinner"></div>
-            <p>ငွေလဲနှုန်းများ ရယူနေသည်...</p>
+            <p>{% trans "Loading exchange rates..." %}</p>
         </div>
 
         <div id="full-rates-container" class="rates-grid" style="display: none;">
@@ -128,12 +129,12 @@
         </div>
 
         <div id="rates-error" class="error-message" style="display: none;">
-            <p>ငွေလဲနှုန်းများ ရယူ၍မရပါ။ ခဏနောက် ထပ်မံကြိုးစားပါ။</p>
+            <p>{% trans "Failed to load exchange rates. Please try again later." %}</p>
         </div>
 
         <div class="rates-note">
-            <p>* ငွေလဲနှုန်းများသည် အချိန်နှင့်အမျှ ပြောင်းလဲနိုင်ပါသည်။</p>
-            <p>* ပိုမိုတိကျသော ငွေလဲနှုန်းအတွက် ကျွန်ုပ်တို့၏ မိုဘိုင်းအက်ပ်ကို အသုံးပြုပါ။</p>
+            <p>{% trans "* Exchange rates may change at any time." %}</p>
+            <p>{% trans "* For more accurate exchange rates, please use our mobile app." %}</p>
         </div>
     </div>
 </section>
@@ -142,8 +143,8 @@
 <section id="download" class="download-section">
     <div class="container">
         <div class="section-header">
-            <h2>S2 Exchange အက်ပ်ကို ဒေါင်းလုဒ်လုပ်ပါ</h2>
-            <p>လက်ချက်လက်ငင်း ငွေလဲနှုန်းများ၊ ထိုင်းထီဝယ်ယူခြင်းနှင့် အခြားများကို သင့်ဖုန်းမှ ရယူနိုင်ပါသည်</p>
+            <h2>{% trans "Download S2 Exchange App" %}</h2>
+            <p>{% trans "Get instant access to exchange rates, Thai lottery, and more from your phone" %}</p>
         </div>
         <div class="download-buttons-large">
             <a href="#" class="download-btn-badge">
