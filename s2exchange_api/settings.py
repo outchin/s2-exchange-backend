@@ -98,7 +98,8 @@ REDIS_URL = os.environ.get('REDIS_URL', '')
 
 # Check if Redis is available (proper URL with host and port)
 # Valid Redis URL should have format: redis://host:port or redis://default:password@host:port
-USE_REDIS = REDIS_URL and REDIS_URL.startswith('redis://') and ':' in REDIS_URL[8:] and len(REDIS_URL) > 20
+# TEMPORARY: Disable Redis due to connection timeouts, use in-memory layer
+USE_REDIS = False  # REDIS_URL and REDIS_URL.startswith('redis://') and ':' in REDIS_URL[8:] and len(REDIS_URL) > 20
 
 if USE_REDIS:
     # Production: Use Redis for channels and cache
