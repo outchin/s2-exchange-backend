@@ -106,7 +106,15 @@ if USE_REDIS:
         'default': {
             'BACKEND': 'channels_redis.core.RedisChannelLayer',
             'CONFIG': {
-                'hosts': [REDIS_URL],
+                'hosts': [{
+                    'address': REDIS_URL,
+                    'socket_connect_timeout': 10,
+                    'socket_timeout': 10,
+                    'socket_keepalive': True,
+                    'socket_keepalive_options': {},
+                    'retry_on_timeout': True,
+                    'health_check_interval': 30,
+                }],
                 'capacity': 1500,
                 'expiry': 10,
                 # Connection settings for stability
@@ -114,7 +122,6 @@ if USE_REDIS:
                     'http.request': 200,
                     'http.response': 200,
                 },
-                # Socket timeout settings
                 'symmetric_encryption_keys': [],
             },
         },
