@@ -102,19 +102,15 @@ USE_REDIS = REDIS_URL and REDIS_URL.startswith('redis://') and ':' in REDIS_URL[
 
 if USE_REDIS:
     # Production: Use Redis for channels and cache
+    # Parse Redis URL to add connection parameters
+    import urllib.parse as urlparse
+    parsed_redis = urlparse.urlparse(REDIS_URL)
+
     CHANNEL_LAYERS = {
         'default': {
             'BACKEND': 'channels_redis.core.RedisChannelLayer',
             'CONFIG': {
-                'hosts': [{
-                    'address': REDIS_URL,
-                    'socket_connect_timeout': 10,
-                    'socket_timeout': 10,
-                    'socket_keepalive': True,
-                    'socket_keepalive_options': {},
-                    'retry_on_timeout': True,
-                    'health_check_interval': 30,
-                }],
+                'hosts': [(parsed_redis.hostname, parsed_redis.port or 6379)],
                 'capacity': 1500,
                 'expiry': 10,
                 # Connection settings for stability
@@ -123,6 +119,15 @@ if USE_REDIS:
                     'http.response': 200,
                 },
                 'symmetric_encryption_keys': [],
+                # Redis connection options
+                'connection_kwargs': {
+                    'password': parsed_redis.password,
+                    'socket_connect_timeout': 10,
+                    'socket_timeout': 10,
+                    'socket_keepalive': True,
+                    'retry_on_timeout': True,
+                    'health_check_interval': 30,
+                },
             },
         },
     }
