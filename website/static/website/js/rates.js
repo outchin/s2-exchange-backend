@@ -4,9 +4,17 @@ async function fetchExchangeRates() {
         const response = await fetch('/api/rates/');
         const data = await response.json();
 
-        if (data.rates && data.rates.length > 0) {
-            displayPhoneRates(data.rates);
-            displayFullRates(data.rates);
+        // API returns array directly, not wrapped in {rates: [...]}
+        if (Array.isArray(data) && data.length > 0) {
+            // Filter out MMK (base currency) and only show foreign currencies
+            const foreignRates = data.filter(rate => rate.currency_code !== 'MMK');
+
+            if (foreignRates.length > 0) {
+                displayPhoneRates(foreignRates);
+                displayFullRates(foreignRates);
+            } else {
+                showError();
+            }
         } else {
             showError();
         }
@@ -27,10 +35,10 @@ function displayPhoneRates(rates) {
     container.innerHTML = displayRates.map(rate => `
         <div class="phone-rate-card">
             <div class="phone-rate-header">
-                <div class="phone-currency-symbol">${getCurrencySymbol(rate.code)}</div>
+                <div class="phone-currency-symbol">${getCurrencySymbol(rate.currency_code)}</div>
                 <div class="phone-currency-info">
-                    <h4>${rate.code}</h4>
-                    <p>${rate.name}</p>
+                    <h4>${rate.currency_code}</h4>
+                    <p>${rate.currency_name}</p>
                 </div>
             </div>
             <div class="phone-rate-values">
@@ -62,10 +70,10 @@ function displayFullRates(rates) {
     containerEl.innerHTML = rates.map(rate => `
         <div class="rate-card">
             <div class="rate-header">
-                <div class="currency-symbol">${getCurrencySymbol(rate.code)}</div>
+                <div class="currency-symbol">${getCurrencySymbol(rate.currency_code)}</div>
                 <div class="currency-info">
-                    <h3>${rate.code}</h3>
-                    <p>${rate.name}</p>
+                    <h3>${rate.currency_code}</h3>
+                    <p>${rate.currency_name}</p>
                 </div>
             </div>
             <div class="rate-values">
@@ -78,11 +86,6 @@ function displayFullRates(rates) {
                     <div class="value">${formatRate(rate.sell_rate)} MMK</div>
                 </div>
             </div>
-            ${rate.change_percentage !== null ? `
-                <div class="rate-change ${rate.change_percentage >= 0 ? 'positive' : 'negative'}">
-                    ${rate.change_percentage >= 0 ? '↑' : '↓'} ${Math.abs(rate.change_percentage).toFixed(2)}%
-                </div>
-            ` : ''}
         </div>
     `).join('');
 }
