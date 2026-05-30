@@ -1,14 +1,15 @@
 {% extends 'website/base.html' %}
+{% load i18n %}
 
-{% block title %}About Us - S2 Exchange{% endblock %}
+{% block title %}{% trans "About Us" %} - S2 Exchange{% endblock %}
 {% block nav_about %}active{% endblock %}
 
 {% block content %}
 <!-- Page Header -->
 <section class="page-header">
     <div class="container">
-        <h1>ကျွန်ုပ်တို့အကြောင်း</h1>
-        <p>S2 Exchange - သင့်ရဲ့ ယုံကြည်စိတ်ချရသော ငွေလဲလှယ်ရေးလုပ်ဖော်ကိုင်ဖက်</p>
+        <h1>{% trans "About Us" %}</h1>
+        <p>{% trans "S2 Exchange - Your trusted currency exchange partner" %}</p>
     </div>
 </section>
 
@@ -17,33 +18,33 @@
     <div class="container">
         <div class="about-grid">
             <div class="about-content">
-                <h2>S2 Exchange ကိုကြိုဆိုပါတယ်</h2>
-                <p>S2 Exchange သည် မြန်မာနိုင်ငံတွင် ယုံကြည်စိတ်ချရသော ငွေလဲလှယ်ရေးနှင့် ထိုင်းထီဝန်ဆောင်မှုပေးသူတစ်ဦးဖြစ်ပါသည်။ ကျွန်ုပ်တို့သည် သင့်အတွက် လုံခြုံ၊ မြန်ဆန်၊ ယုံကြည်စိတ်ချရသော ဝန်ဆောင်မှုများကို ပေးအပ်လျက်ရှိပါသည်။</p>
+                <h2>{% trans "Welcome to S2 Exchange" %}</h2>
+                <p>{% trans "S2 Exchange is a trusted currency exchange and Thai lottery service provider in Myanmar. We provide secure, fast, and reliable services for you." %}</p>
 
-                <h3>ကျွန်ုပ်တို့၏ မျှော်မှန်းချက်</h3>
-                <p>ငွေလဲလှယ်ရေးနှင့် ထိုင်းထီဝယ်ယူခြင်းကို လွယ်ကူ၊ လုံခြုံ၊ စိတ်ချရစေရန် ဖြစ်ပါသည်။ ကျွန်ုပ်တို့၏ မိုဘိုင်းအက်ပ်မှတစ်ဆင့် အချိန်မရွေး၊ နေရာမရွေး ဝန်ဆောင်မှုများကို အသုံးပြုနိုင်ပါသည်။</p>
+                <h3>{% trans "Our Vision" %}</h3>
+                <p>{% trans "To make currency exchange and Thai lottery purchase easy, secure, and reliable. Through our mobile app, you can access our services anytime, anywhere." %}</p>
 
-                <h3>ကျွန်ုပ်တို့၏ တန်ဖိုးများ</h3>
+                <h3>{% trans "Our Values" %}</h3>
                 <ul class="values-list">
-                    <li><strong>ယုံကြည်စိတ်ချရမှု:</strong> သင့်ငွေကြေးနှင့် အချက်အလက်များကို အမြဲလုံခြုံစိတ်ချစွာ ထိန်းသိမ်းပါသည်</li>
-                    <li><strong>ပွင့်လင်းမြင်သာမှု:</strong> ငွေလဲနှုန်းများနှင့် အခကြေးငွေများကို ရှင်းလင်းစွာ ဖော်ပြပါသည်</li>
-                    <li><strong>သုံးစွဲသူဗဟိုပြု:</strong> သင့်လိုအပ်ချက်များကို ဦးစားပေး ဆောင်ရွက်ပေးပါသည်</li>
-                    <li><strong>ဆန်းသစ်တီထွင်မှု:</strong> နည်းပညာအသစ်များဖြင့် ပိုမိုကောင်းမွန်သော ဝန်ဆောင်မှုပေးရန် ကြိုးစားပါသည်</li>
+                    <li><strong>{% trans "Trustworthy:" %}</strong> {% trans "We always keep your money and data safe and secure" %}</li>
+                    <li><strong>{% trans "Transparency:" %}</strong> {% trans "We clearly display exchange rates and fees" %}</li>
+                    <li><strong>{% trans "Customer-Centric:" %}</strong> {% trans "We prioritize your needs" %}</li>
+                    <li><strong>{% trans "Innovation:" %}</strong> {% trans "We strive to provide better services with new technologies" %}</li>
                 </ul>
             </div>
 
             <div class="about-image">
                 <div class="stat-card">
                     <div class="stat-number">1000+</div>
-                    <div class="stat-label">ကျေနပ်သောဖောက်သည်များ</div>
+                    <div class="stat-label">{% trans "Satisfied Customers" %}</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-number">24/7</div>
-                    <div class="stat-label">ဝန်ဆောင်မှုပေးချိန်</div>
+                    <div class="stat-label">{% trans "Service Hours" %}</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-number">100%</div>
-                    <div class="stat-label">လုံခြုံမှုအာမခံ</div>
+                    <div class="stat-label">{% trans "Security Guarantee" %}</div>
                 </div>
             </div>
         </div>
@@ -53,27 +54,43 @@
 <!-- Why Choose Us Section -->
 <section class="why-choose-section">
     <div class="container">
-        <h2>ကျွန်ုပ်တို့ကို အဘယ်ကြောင့် ရွေးချယ်သင့်သနည်း</h2>
+        <h2>{% trans "Why Choose Us" %}</h2>
         <div class="features-grid">
             <div class="feature-card">
-                <div class="feature-icon">⚡</div>
-                <h3>မြန်ဆန်သော ဝန်ဆောင်မှု</h3>
-                <p>မိနစ်ပိုင်းအတွင်း ငွေလဲလှယ်မှုများ ပြီးမြောက်စေပါသည်</p>
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="#D32F2F" xmlns="http://www.w3.org/2000/svg" width="56" height="56">
+                        <path d="M7 2V13H10V22L17 10H13L17 2H7Z"/>
+                    </svg>
+                </div>
+                <h3>{% trans "Fast Service" %}</h3>
+                <p>{% trans "Complete currency exchanges within minutes" %}</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">💰</div>
-                <h3>အကောင်းဆုံး နှုန်းထား</h3>
-                <p>ယှဉ်ပြိုင်နိုင်သော ငွေလဲနှုန်းများဖြင့် ဝန်ဆောင်မှုပေးပါသည်</p>
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="#D32F2F" xmlns="http://www.w3.org/2000/svg" width="56" height="56">
+                        <path d="M11.8 10.9C9.53 10.31 8.8 9.7 8.8 8.75C8.8 7.66 9.81 6.9 11.5 6.9C13.28 6.9 13.94 7.75 14 9H16.21C16.14 7.28 15.09 5.7 13 5.19V3H10V5.16C8.06 5.58 6.5 6.84 6.5 8.77C6.5 11.08 8.41 12.23 11.2 12.9C13.7 13.5 14.2 14.38 14.2 15.31C14.2 16 13.71 17.1 11.5 17.1C9.44 17.1 8.63 16.18 8.52 15H6.32C6.44 17.19 8.08 18.42 10 18.83V21H13V18.85C14.95 18.48 16.5 17.35 16.5 15.3C16.5 12.46 14.07 11.49 11.8 10.9Z"/>
+                    </svg>
+                </div>
+                <h3>{% trans "Best Rates" %}</h3>
+                <p>{% trans "We provide competitive exchange rates" %}</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">🛡️</div>
-                <h3>လုံခြုံစိတ်ချရမှု</h3>
-                <p>နောက်ဆုံးပေါ် လုံခြုံရေးနည်းပညာများဖြင့် ကာကွယ်ထားပါသည်</p>
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="#D32F2F" xmlns="http://www.w3.org/2000/svg" width="56" height="56">
+                        <path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1ZM12 11.99H19C18.47 16.11 15.72 19.78 12 20.93V12H5V6.3L12 3.19V11.99Z"/>
+                    </svg>
+                </div>
+                <h3>{% trans "Secure & Reliable" %}</h3>
+                <p>{% trans "Protected with the latest security technologies" %}</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">👥</div>
-                <h3>ကျွမ်းကျင်သော အဖွဲ့</h3>
-                <p>အတွေ့အကြုံရှိသော အဖွဲ့သားများက အကူအညီပေးပါသည်</p>
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="#D32F2F" xmlns="http://www.w3.org/2000/svg" width="56" height="56">
+                        <path d="M16 11C17.66 11 18.99 9.66 18.99 8C18.99 6.34 17.66 5 16 5C14.34 5 13 6.34 13 8C13 9.66 14.34 11 16 11ZM8 11C9.66 11 10.99 9.66 10.99 8C10.99 6.34 9.66 5 8 5C6.34 5 5 6.34 5 8C5 9.66 6.34 11 8 11ZM8 13C5.67 13 1 14.17 1 16.5V19H15V16.5C15 14.17 10.33 13 8 13ZM16 13C15.71 13 15.38 13.02 15.03 13.05C16.19 13.89 17 15.02 17 16.5V19H23V16.5C23 14.17 18.33 13 16 13Z"/>
+                    </svg>
+                </div>
+                <h3>{% trans "Expert Team" %}</h3>
+                <p>{% trans "Experienced team members provide assistance" %}</p>
             </div>
         </div>
     </div>

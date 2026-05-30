@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-30 14:00+0630\n"
+"POT-Creation-Date: 2026-05-30 15:38+0630\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1271,6 +1271,123 @@ msgstr ""
 msgid "Redirected but the response is missing a Location: header."
 msgstr ""
 
+#: website/templates/website/about.html:4
+#: website/templates/website/about.html:11
+#: website/templates/website/base.html:23
+#: website/templates/website/base.html:46
+msgid "About Us"
+msgstr "ကျွန်ုပ်တို့အကြောင်း"
+
+#: website/templates/website/about.html:12
+msgid "S2 Exchange - Your trusted currency exchange partner"
+msgstr "S2 Exchange - သင့်ရဲ့ ယုံကြည်စိတ်ချရသော ငွေလဲလှယ်ရေးလုပ်ဖော်ကိုင်ဖက်"
+
+#: website/templates/website/about.html:21
+#: website/templates/website/home.html:13
+msgid "Welcome to S2 Exchange"
+msgstr "S2 Exchange သို့ ကြိုဆိုပါသည်"
+
+#: website/templates/website/about.html:22
+msgid ""
+"S2 Exchange is a trusted currency exchange and Thai lottery service provider "
+"in Myanmar. We provide secure, fast, and reliable services for you."
+msgstr "S2 Exchange သည် မြန်မာနိုင်ငံတွင် ယုံကြည်စိတ်ချရသော ငွေလဲလှယ်ရေးနှင့် ထိုင်းထီဝန်ဆောင်မှုပေးသူတစ်ဦးဖြစ်ပါသည်။ ကျွန်ုပ်တို့သည် သင့်အတွက် လုံခြုံ၊ မြန်ဆန်၊ ယုံကြည်စိတ်ချရသော ဝန်ဆောင်မှုများကို ပေးအပ်လျက်ရှိပါသည်။"
+
+#: website/templates/website/about.html:24
+msgid "Our Vision"
+msgstr "ကျွန်ုပ်တို့၏ မျှော်မှန်းချက်"
+
+#: website/templates/website/about.html:25
+msgid ""
+"To make currency exchange and Thai lottery purchase easy, secure, and "
+"reliable. Through our mobile app, you can access our services anytime, "
+"anywhere."
+msgstr "ငွေလဲလှယ်ရေးနှင့် ထိုင်းထီဝယ်ယူခြင်းကို လွယ်ကူ၊ လုံခြုံ၊ စိတ်ချရစေရန် ဖြစ်ပါသည်။ ကျွန်ုပ်တို့၏ မိုဘိုင်းအက်ပ်မှတစ်ဆင့် အချိန်မရွေး၊ နေရာမရွေး ဝန်ဆောင်မှုများကို အသုံးပြုနိုင်ပါသည်။"
+
+#: website/templates/website/about.html:27
+msgid "Our Values"
+msgstr "ကျွန်ုပ်တို့၏ တန်ဖိုးများ"
+
+#: website/templates/website/about.html:29
+msgid "Trustworthy:"
+msgstr "ယုံကြည်စိတ်ချရမှု:"
+
+#: website/templates/website/about.html:29
+msgid "We always keep your money and data safe and secure"
+msgstr "သင့်ငွေကြေးနှင့် အချက်အလက်များကို အမြဲလုံခြုံစိတ်ချစွာ ထိန်းသိမ်းပါသည်"
+
+#: website/templates/website/about.html:30
+msgid "Transparency:"
+msgstr "ပွင့်လင်းမြင်သာမှု:"
+
+#: website/templates/website/about.html:30
+msgid "We clearly display exchange rates and fees"
+msgstr "ငွေလဲနှုန်းများနှင့် အခကြေးငွေများကို ရှင်းလင်းစွာ ဖော်ပြပါသည်"
+
+#: website/templates/website/about.html:31
+msgid "Customer-Centric:"
+msgstr "သုံးစွဲသူဗဟိုပြု:"
+
+#: website/templates/website/about.html:31
+msgid "We prioritize your needs"
+msgstr "သင့်လိုအပ်ချက်များကို ဦးစားပေး ဆောင်ရွက်ပေးပါသည်"
+
+#: website/templates/website/about.html:32
+msgid "Innovation:"
+msgstr "ဆန်းသစ်တီထွင်မှု:"
+
+#: website/templates/website/about.html:32
+msgid "We strive to provide better services with new technologies"
+msgstr "နည်းပညာအသစ်များဖြင့် ပိုမိုကောင်းမွန်သော ဝန်ဆောင်မှုပေးရန် ကြိုးစားပါသည်"
+
+#: website/templates/website/about.html:39
+msgid "Satisfied Customers"
+msgstr "ကျေနပ်သောဖောက်သည်များ"
+
+#: website/templates/website/about.html:43
+msgid "Service Hours"
+msgstr "ဝန်ဆောင်မှုပေးချိန်"
+
+#: website/templates/website/about.html:47
+msgid "Security Guarantee"
+msgstr "လုံခြုံမှုအာမခံ"
+
+#: website/templates/website/about.html:57
+msgid "Why Choose Us"
+msgstr "ကျွန်ုပ်တို့ကို အဘယ်ကြောင့် ရွေးချယ်သင့်သနည်း"
+
+#: website/templates/website/about.html:65
+msgid "Fast Service"
+msgstr "မြန်ဆန်သော ဝန်ဆောင်မှု"
+
+#: website/templates/website/about.html:66
+msgid "Complete currency exchanges within minutes"
+msgstr "မိနစ်ပိုင်းအတွင်း ငွေလဲလှယ်မှုများ ပြီးမြောက်စေပါသည်"
+
+#: website/templates/website/about.html:74
+msgid "Best Rates"
+msgstr "အကောင်းဆုံး နှုန်းထား"
+
+#: website/templates/website/about.html:75
+msgid "We provide competitive exchange rates"
+msgstr "ယှဉ်ပြိုင်နိုင်သော ငွေလဲနှုန်းများဖြင့် ဝန်ဆောင်မှုပေးပါသည်"
+
+#: website/templates/website/about.html:83
+msgid "Secure & Reliable"
+msgstr "လုံခြုံစိတ်ချရမှု"
+
+#: website/templates/website/about.html:84
+msgid "Protected with the latest security technologies"
+msgstr "နောက်ဆုံးပေါ် လုံခြုံရေးနည်းပညာများဖြင့် ကာကွယ်ထားပါသည်"
+
+#: website/templates/website/about.html:92
+msgid "Expert Team"
+msgstr "ကျွမ်းကျင်သော အဖွဲ့"
+
+#: website/templates/website/about.html:93
+msgid "Experienced team members provide assistance"
+msgstr "အတွေ့အကြုံရှိသော အဖွဲ့သားများက အကူအညီပေးပါသည်"
+
 #: website/templates/website/base.html:7
 msgid "S2 Exchange - Currency exchange and Thai lottery services"
 msgstr "S2 Exchange - ငွေလဲလှယ်ခြင်းနှင့် ထိုင်းထီဝန်ဆောင်မှုများ"
@@ -1288,11 +1405,6 @@ msgstr "ငွေလဲလှယ်ခြင်းနှင့် ထိုင�
 #: website/templates/website/base.html:45
 msgid "Home"
 msgstr "ပင်မစာမျက်နှာ"
-
-#: website/templates/website/base.html:23
-#: website/templates/website/base.html:46
-msgid "About Us"
-msgstr "ကျွန်ုပ်တို့အကြောင်း"
 
 #: website/templates/website/base.html:24
 #: website/templates/website/base.html:47
@@ -1388,10 +1500,6 @@ msgstr "ပို့မည်"
 #: website/templates/website/contact.html:167
 msgid "Thank you! We have received your message and will get back to you soon."
 msgstr "ကျေးဇူးတင်ပါသည်! သင့်မက်ဆေ့ချ်ကို ရရှိပြီးဖြစ်ပြီး မကြာမီ ပြန်လည်ဆက်သွယ်ပေးပါမည်။"
-
-#: website/templates/website/home.html:13
-msgid "Welcome to S2 Exchange"
-msgstr "S2 Exchange သို့ ကြိုဆိုပါသည်"
 
 #: website/templates/website/home.html:15
 msgid "Access real-time exchange rates through our mobile application"
