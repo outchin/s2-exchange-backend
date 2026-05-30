@@ -108,6 +108,13 @@ if USE_REDIS:
                 'hosts': [REDIS_URL],
                 'capacity': 1500,
                 'expiry': 10,
+                # Connection settings for stability
+                'channel_capacity': {
+                    'http.request': 200,
+                    'http.response': 200,
+                },
+                # Socket timeout settings
+                'symmetric_encryption_keys': [],
             },
         },
     }
@@ -118,6 +125,10 @@ if USE_REDIS:
             'LOCATION': REDIS_URL,
             'OPTIONS': {
                 'db': 1,
+                'socket_connect_timeout': 5,  # 5 seconds connection timeout
+                'socket_timeout': 5,  # 5 seconds read/write timeout
+                'retry_on_timeout': True,
+                'max_connections': 50,
             },
             'KEY_PREFIX': 's2exchange',
             'TIMEOUT': 300,
