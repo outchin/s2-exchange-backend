@@ -52,7 +52,7 @@ final response = await http.get(
     "platform": "facebook",
     "platform_display": "Facebook",
     "url": "https://www.facebook.com/groups/s2exchange",
-    "icon_url": "https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg",
+    "icon_url": "https://cdn.simpleicons.org/facebook/1877F2",
     "description": "Join our Facebook group for exchange updates",
     "sort_order": 1
   },
@@ -62,7 +62,7 @@ final response = await http.get(
     "platform": "messenger",
     "platform_display": "Facebook Messenger",
     "url": "https://m.me/s2exchange",
-    "icon_url": "https://upload.wikimedia.org/wikipedia/commons/b/be/Facebook_Messenger_logo_2020.svg",
+    "icon_url": "https://cdn.simpleicons.org/messenger/00B2FF",
     "description": "Chat with us on Messenger",
     "sort_order": 2
   },
@@ -72,7 +72,7 @@ final response = await http.get(
     "platform": "telegram",
     "platform_display": "Telegram",
     "url": "https://t.me/s2exchange",
-    "icon_url": "https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg",
+    "icon_url": "https://cdn.simpleicons.org/telegram/26A5E4",
     "description": "Contact us on Telegram",
     "sort_order": 3
   },
@@ -82,7 +82,7 @@ final response = await http.get(
     "platform": "viber",
     "platform_display": "Viber",
     "url": "viber://chat?number=%2B959123456789",
-    "icon_url": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Viber_logo.svg",
+    "icon_url": "https://cdn.simpleicons.org/viber/7360F2",
     "description": "Call us on Viber",
     "sort_order": 4
   }
@@ -336,17 +336,17 @@ https://s2-exchange-backend-production.up.railway.app/admin/exchange/communicati
 
 ## Default Platform Icons
 
-If admin doesn't provide custom icon, default icons are used:
+If admin doesn't provide custom icon, default icons are used from Simple Icons CDN:
 
-| Platform | Icon URL (Wikipedia) |
+| Platform | Icon URL (Simple Icons CDN) |
 |----------|---------------------|
-| Facebook | `https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg` |
-| Messenger | `https://upload.wikimedia.org/wikipedia/commons/b/be/Facebook_Messenger_logo_2020.svg` |
-| Telegram | `https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg` |
-| Viber | `https://upload.wikimedia.org/wikipedia/commons/7/7a/Viber_logo.svg` |
-| WhatsApp | `https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg` |
-| LINE | `https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg` |
-| WeChat | `https://upload.wikimedia.org/wikipedia/commons/1/12/WeChat_logo.svg` |
+| Facebook | `https://cdn.simpleicons.org/facebook/1877F2` |
+| Messenger | `https://cdn.simpleicons.org/messenger/00B2FF` |
+| Telegram | `https://cdn.simpleicons.org/telegram/26A5E4` |
+| Viber | `https://cdn.simpleicons.org/viber/7360F2` |
+| WhatsApp | `https://cdn.simpleicons.org/whatsapp/25D366` |
+| LINE | `https://cdn.simpleicons.org/line/00C300` |
+| WeChat | `https://cdn.simpleicons.org/wechat/07C160` |
 
 ---
 
@@ -392,7 +392,7 @@ GET https://s2-exchange-backend-production.up.railway.app/api/channels/
 
 1. **Dynamic:** Admin can add/remove/edit channels without app update
 2. **Flexible:** Support any platform (Facebook, Telegram, Viber, WhatsApp, custom URLs)
-3. **Icons:** Default platform icons provided (SVG format from Wikipedia)
+3. **Icons:** Default platform icons provided (SVG format from Simple Icons CDN)
 4. **Ordering:** Channels sorted by `sort_order` field (admin controlled)
 5. **Active/Inactive:** Admin can temporarily hide channels without deleting
 

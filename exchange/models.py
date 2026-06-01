@@ -448,14 +448,14 @@ class CommunicationChannel(models.Model):
 
     def get_default_icon_url(self):
         """Return default icon URL based on platform"""
-        # These are placeholder URLs - you can replace with actual CDN URLs later
+        # Using Simple Icons CDN for reliable, modern social media icons
         icons = {
-            self.PLATFORM_FACEBOOK: 'https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg',
-            self.PLATFORM_MESSENGER: 'https://upload.wikimedia.org/wikipedia/commons/b/be/Facebook_Messenger_logo_2020.svg',
-            self.PLATFORM_TELEGRAM: 'https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg',
-            self.PLATFORM_VIBER: 'https://upload.wikimedia.org/wikipedia/commons/7/7a/Viber_logo.svg',
-            self.PLATFORM_WHATSAPP: 'https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg',
-            self.PLATFORM_LINE: 'https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg',
-            self.PLATFORM_WECHAT: 'https://upload.wikimedia.org/wikipedia/commons/1/12/WeChat_logo.svg',
+            self.PLATFORM_FACEBOOK: 'https://cdn.simpleicons.org/facebook/1877F2',
+            self.PLATFORM_MESSENGER: 'https://cdn.simpleicons.org/messenger/00B2FF',
+            self.PLATFORM_TELEGRAM: 'https://cdn.simpleicons.org/telegram/26A5E4',
+            self.PLATFORM_VIBER: 'https://cdn.simpleicons.org/viber/7360F2',
+            self.PLATFORM_WHATSAPP: 'https://cdn.simpleicons.org/whatsapp/25D366',
+            self.PLATFORM_LINE: 'https://cdn.simpleicons.org/line/00C300',
+            self.PLATFORM_WECHAT: 'https://cdn.simpleicons.org/wechat/07C160',
         }
         return icons.get(self.platform, '')
