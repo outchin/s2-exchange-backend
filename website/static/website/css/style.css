@@ -1068,23 +1068,71 @@ section {
 .social-btn img {
     width: 24px;
     height: 24px;
+    object-fit: contain;
 }
 
+/* Platform-specific colors from API */
 .social-btn.facebook {
     background: linear-gradient(135deg, #1877F2, #0c63d4);
 }
 
+.social-btn.messenger {
+    background: linear-gradient(135deg, #00B2FF, #0088CC);
+}
+
 .social-btn.telegram {
-    background: linear-gradient(135deg, #0088CC, #006ba3);
+    background: linear-gradient(135deg, #26A5E4, #1c8ab8);
 }
 
 .social-btn.viber {
-    background: linear-gradient(135deg, #665CAC, #4d4480);
+    background: linear-gradient(135deg, #7360F2, #5a4bbf);
+}
+
+.social-btn.whatsapp {
+    background: linear-gradient(135deg, #25D366, #1da851);
+}
+
+.social-btn.line {
+    background: linear-gradient(135deg, #00C300, #009900);
+}
+
+.social-btn.wechat {
+    background: linear-gradient(135deg, #07C160, #059c4b);
+}
+
+.social-btn.other {
+    background: linear-gradient(135deg, #6c757d, #545b62);
 }
 
 .social-btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Loading and error states for social buttons */
+.loading-message {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-grey);
+}
+
+.loading-message p {
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.error-message-small {
+    text-align: center;
+    padding: 1rem;
+    background: linear-gradient(135deg, #ffebee, #ffcdd2);
+    border-radius: 10px;
+    color: var(--primary-dark);
+    border: 1px solid #ef9a9a;
+}
+
+.error-message-small p {
+    margin: 0;
+    font-size: 0.9rem;
 }
 
 /* ===== CONTACT FORM ===== */
