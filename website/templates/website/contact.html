@@ -155,7 +155,8 @@ async function loadCommunicationChannels() {
     const errorEl = document.getElementById('social-buttons-error');
 
     try {
-        const response = await fetch('https://s2-exchange-backend-production.up.railway.app/api/channels/');
+        // Use relative URL to automatically work in both local and production
+        const response = await fetch('/api/channels/');
 
         if (!response.ok) {
             throw new Error('Failed to load channels');
