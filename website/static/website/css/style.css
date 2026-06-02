@@ -20,7 +20,7 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Myanmar Text';
+    font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif, 'Myanmar Text';
     color: var(--text-dark);
     background-color: var(--background);
     line-height: 1.6;
