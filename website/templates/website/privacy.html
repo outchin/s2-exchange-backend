@@ -1,0 +1,323 @@
+{% extends 'website/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Privacy Policy - S2 Exchange" %}{% endblock %}
+{% block nav_privacy %}active{% endblock %}
+
+{% block content %}
+<section class="privacy-section">
+    <div class="container">
+        <div class="privacy-header">
+            <h1>{% trans "Privacy Policy" %}</h1>
+            <p class="last-updated">{% trans "Last Updated: June 2, 2026" %}</p>
+        </div>
+
+        <div class="privacy-content">
+            <div class="privacy-block">
+                <h2>{% trans "1. Introduction" %}</h2>
+                <p>{% trans "Welcome to S2 Exchange ('we', 'our', or 'us'). We are committed to protecting your personal information and your right to privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application and website." %}</p>
+                <p>{% trans "By using S2 Exchange services, you agree to the collection and use of information in accordance with this policy. If you do not agree with our policies and practices, please do not use our services." %}</p>
+            </div>
+
+            <div class="privacy-block">
+                <h2>{% trans "2. Information We Collect" %}</h2>
+                <h3>{% trans "2.1 Personal Information" %}</h3>
+                <p>{% trans "When you create an account or use our services, we may collect the following personal information:" %}</p>
+                <ul>
+                    <li>{% trans "Name and email address (via Google Sign-In)" %}</li>
+                    <li>{% trans "Profile picture (via Google Sign-In)" %}</li>
+                    <li>{% trans "Phone number (if provided)" %}</li>
+                    <li>{% trans "Transaction history and currency exchange preferences" %}</li>
+                    <li>{% trans "Thai lottery ticket purchases and preferences" %}</li>
+                </ul>
+
+                <h3>{% trans "2.2 Automatically Collected Information" %}</h3>
+                <p>{% trans "When you access our services, we automatically collect certain information about your device, including:" %}</p>
+                <ul>
+                    <li>{% trans "Device type and operating system" %}</li>
+                    <li>{% trans "IP address and general location data" %}</li>
+                    <li>{% trans "App usage data and analytics" %}</li>
+                    <li>{% trans "Browser type and version (for website users)" %}</li>
+                    <li>{% trans "Time zone settings and language preferences" %}</li>
+                </ul>
+
+                <h3>{% trans "2.3 Financial Information" %}</h3>
+                <p>{% trans "For currency exchange and lottery services, we may collect:" %}</p>
+                <ul>
+                    <li>{% trans "Transaction amounts and currency preferences" %}</li>
+                    <li>{% trans "Payment method information (processed through secure third-party payment processors)" %}</li>
+                    <li>{% trans "Order history and transaction records" %}</li>
+                </ul>
+            </div>
+
+            <div class="privacy-block">
+                <h2>{% trans "3. How We Use Your Information" %}</h2>
+                <p>{% trans "We use the collected information for the following purposes:" %}</p>
+                <ul>
+                    <li>{% trans "To provide and maintain our currency exchange and lottery services" %}</li>
+                    <li>{% trans "To process your transactions and manage your orders" %}</li>
+                    <li>{% trans "To authenticate your account and ensure security" %}</li>
+                    <li>{% trans "To send you notifications about your transactions and account activities" %}</li>
+                    <li>{% trans "To provide customer support and respond to your inquiries" %}</li>
+                    <li>{% trans "To improve our services and develop new features" %}</li>
+                    <li>{% trans "To comply with legal obligations and prevent fraud" %}</li>
+                    <li>{% trans "To send you marketing communications (with your consent)" %}</li>
+                </ul>
+            </div>
+
+            <div class="privacy-block">
+                <h2>{% trans "4. Information Sharing and Disclosure" %}</h2>
+                <p>{% trans "We do not sell your personal information. We may share your information in the following circumstances:" %}</p>
+
+                <h3>{% trans "4.1 Service Providers" %}</h3>
+                <p>{% trans "We may share your information with third-party service providers who perform services on our behalf, including:" %}</p>
+                <ul>
+                    <li>{% trans "Payment processors for transaction processing" %}</li>
+                    <li>{% trans "Cloud hosting providers (Railway, Google Cloud Platform)" %}</li>
+                    <li>{% trans "Analytics services to understand app usage" %}</li>
+                    <li>{% trans "Authentication services (Google OAuth)" %}</li>
+                </ul>
+
+                <h3>{% trans "4.2 Legal Requirements" %}</h3>
+                <p>{% trans "We may disclose your information if required to do so by law or in response to valid requests by public authorities, including to meet national security or law enforcement requirements." %}</p>
+
+                <h3>{% trans "4.3 Business Transfers" %}</h3>
+                <p>{% trans "In the event of a merger, acquisition, or sale of assets, your information may be transferred as part of that transaction." %}</p>
+            </div>
+
+            <div class="privacy-block">
+                <h2>{% trans "5. Data Security" %}</h2>
+                <p>{% trans "We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. These measures include:" %}</p>
+                <ul>
+                    <li>{% trans "Encryption of data in transit using HTTPS/TLS" %}</li>
+                    <li>{% trans "Secure authentication using industry-standard protocols" %}</li>
+                    <li>{% trans "Regular security assessments and updates" %}</li>
+                    <li>{% trans "Access controls and authentication mechanisms" %}</li>
+                    <li>{% trans "Secure database storage with restricted access" %}</li>
+                </ul>
+                <p>{% trans "However, no method of transmission over the Internet or electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your information, we cannot guarantee its absolute security." %}</p>
+            </div>
+
+            <div class="privacy-block">
+                <h2>{% trans "6. Data Retention" %}</h2>
+                <p>{% trans "We retain your personal information for as long as necessary to fulfill the purposes outlined in this Privacy Policy, unless a longer retention period is required or permitted by law. When we no longer need your information, we will securely delete or anonymize it." %}</p>
+                <p>{% trans "Specifically:" %}</p>
+                <ul>
+                    <li>{% trans "Account information is retained while your account is active" %}</li>
+                    <li>{% trans "Transaction records are retained for 7 years for legal and accounting purposes" %}</li>
+                    <li>{% trans "Analytics data is retained for 2 years" %}</li>
+                    <li>{% trans "Marketing consent records are retained for 3 years after withdrawal" %}</li>
+                </ul>
+            </div>
+
+            <div class="privacy-block">
+                <h2>{% trans "7. Your Privacy Rights" %}</h2>
+                <p>{% trans "Depending on your location, you may have the following rights regarding your personal information:" %}</p>
+                <ul>
+                    <li>{% trans "Access: Request a copy of the personal information we hold about you" %}</li>
+                    <li>{% trans "Correction: Request correction of inaccurate or incomplete information" %}</li>
+                    <li>{% trans "Deletion: Request deletion of your personal information" %}</li>
+                    <li>{% trans "Data Portability: Request transfer of your data to another service" %}</li>
+                    <li>{% trans "Objection: Object to processing of your personal information" %}</li>
+                    <li>{% trans "Restriction: Request restriction of processing your information" %}</li>
+                    <li>{% trans "Withdraw Consent: Withdraw consent for processing where we rely on consent" %}</li>
+                </ul>
+                <p>{% trans "To exercise these rights, please contact us using the information provided in the 'Contact Us' section below." %}</p>
+            </div>
+
+            <div class="privacy-block">
+                <h2>{% trans "8. Account Deletion" %}</h2>
+                <p>{% trans "You can delete your account at any time through the mobile app settings. When you delete your account:" %}</p>
+                <ul>
+                    <li>{% trans "Your profile information will be permanently deleted" %}</li>
+                    <li>{% trans "Your transaction history will be anonymized for record-keeping purposes" %}</li>
+                    <li>{% trans "You will no longer be able to access your account or past orders" %}</li>
+                    <li>{% trans "Some information may be retained for legal compliance purposes" %}</li>
+                </ul>
+                <p>{% trans "Account deletion is permanent and cannot be undone. Please ensure you have backed up any important information before proceeding." %}</p>
+            </div>
+
+            <div class="privacy-block">
+                <h2>{% trans "9. Third-Party Services" %}</h2>
+                <p>{% trans "Our services may contain links to third-party websites or services that are not operated by us. We use the following third-party services:" %}</p>
+                <ul>
+                    <li>{% trans "Google Sign-In for authentication" %}</li>
+                    <li>{% trans "Payment processors for financial transactions" %}</li>
+                    <li>{% trans "Analytics services for app performance monitoring" %}</li>
+                </ul>
+                <p>{% trans "We are not responsible for the privacy practices of these third-party services. We encourage you to review their privacy policies before providing any personal information." %}</p>
+            </div>
+
+            <div class="privacy-block">
+                <h2>{% trans "10. Children's Privacy" %}</h2>
+                <p>{% trans "Our services are not intended for individuals under the age of 18. We do not knowingly collect personal information from children. If you are a parent or guardian and believe your child has provided us with personal information, please contact us, and we will take steps to delete such information." %}</p>
+            </div>
+
+            <div class="privacy-block">
+                <h2>{% trans "11. International Data Transfers" %}</h2>
+                <p>{% trans "Your information may be transferred to and processed in countries other than your country of residence. These countries may have data protection laws that are different from the laws of your country. We ensure appropriate safeguards are in place to protect your information in accordance with this Privacy Policy." %}</p>
+            </div>
+
+            <div class="privacy-block">
+                <h2>{% trans "12. Changes to This Privacy Policy" %}</h2>
+                <p>{% trans "We may update this Privacy Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. We will notify you of any material changes by:" %}</p>
+                <ul>
+                    <li>{% trans "Posting the new Privacy Policy on this page" %}</li>
+                    <li>{% trans "Updating the 'Last Updated' date at the top of this policy" %}</li>
+                    <li>{% trans "Sending you a notification through the app or email" %}</li>
+                </ul>
+                <p>{% trans "We encourage you to review this Privacy Policy periodically for any changes. Your continued use of our services after any modifications indicates your acceptance of the updated Privacy Policy." %}</p>
+            </div>
+
+            <div class="privacy-block">
+                <h2>{% trans "13. Contact Us" %}</h2>
+                <p>{% trans "If you have any questions, concerns, or requests regarding this Privacy Policy or our privacy practices, please contact us:" %}</p>
+                <div class="contact-info">
+                    <p><strong>{% trans "S2 Exchange" %}</strong></p>
+                    <p>{% trans "Email: privacy@s2exchange.com" %}</p>
+                    <p>{% trans "Phone: Available through our Contact page" %}</p>
+                    <p>{% trans "Website: Visit our" %} <a href="/contact/">{% trans "Contact page" %}</a> {% trans "for all communication channels" %}</p>
+                </div>
+                <p>{% trans "We will respond to your inquiry within 30 days." %}</p>
+            </div>
+
+            <div class="privacy-block">
+                <h2>{% trans "14. Consent" %}</h2>
+                <p>{% trans "By using S2 Exchange services, you consent to the collection, use, and sharing of your information as described in this Privacy Policy. If you do not agree with any part of this policy, please discontinue use of our services." %}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.privacy-section {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    min-height: 100vh;
+}
+
+.privacy-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.privacy-header h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 15px;
+}
+
+.last-updated {
+    font-size: 0.95rem;
+    color: #6c757d;
+    font-style: italic;
+}
+
+.privacy-content {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.privacy-block {
+    margin-bottom: 40px;
+}
+
+.privacy-block:last-child {
+    margin-bottom: 0;
+}
+
+.privacy-block h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #3498db;
+}
+
+.privacy-block h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #34495e;
+    margin: 25px 0 15px 0;
+}
+
+.privacy-block p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #495057;
+    margin-bottom: 15px;
+}
+
+.privacy-block ul {
+    margin: 15px 0;
+    padding-left: 30px;
+}
+
+.privacy-block ul li {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #495057;
+    margin-bottom: 10px;
+}
+
+.contact-info {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 10px;
+    border-left: 4px solid #3498db;
+    margin: 20px 0;
+}
+
+.contact-info p {
+    margin-bottom: 10px;
+}
+
+.contact-info a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .privacy-section {
+        padding: 40px 15px;
+    }
+
+    .privacy-header h1 {
+        font-size: 2rem;
+    }
+
+    .privacy-content {
+        padding: 30px 20px;
+    }
+
+    .privacy-block h2 {
+        font-size: 1.5rem;
+    }
+
+    .privacy-block h3 {
+        font-size: 1.2rem;
+    }
+
+    .privacy-block p,
+    .privacy-block ul li {
+        font-size: 0.95rem;
+    }
+}
+</style>
+{% endblock %}
