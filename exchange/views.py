@@ -5,7 +5,14 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_GET, require_http_methods
 
-from .models import CommunicationChannel, Currency, ExchangeOrder, ExchangeRate, ExchangeRateTier
+from .models import (
+    CommunicationChannel,
+    Currency,
+    ExchangeCommunicationChannel,
+    ExchangeOrder,
+    ExchangeRate,
+    ExchangeRateTier,
+)
 from .services import sync_rate_to_realtime_database
 from .cache import get_cached_exchange_rates
 
@@ -191,4 +198,15 @@ def communication_channels(request):
     Returns list of channels with platform info, URLs, and icons.
     """
     channels = CommunicationChannel.objects.filter(is_active=True).order_by('sort_order', 'name')
+    return JsonResponse([channel.to_api_dict() for channel in channels], safe=False)
+
+
+@require_GET
+def exchange_communication_channels(request):
+    """
+    Get all active exchange communication channels for user to initiate exchange transactions.
+    Returns list of channels with platform info, URLs, and icons.
+    These are separate from follow/community channels.
+    """
+    channels = ExchangeCommunicationChannel.objects.filter(is_active=True).order_by('sort_order', 'name')
     return JsonResponse([channel.to_api_dict() for channel in channels], safe=False)

@@ -18,6 +18,11 @@ def contact(request):
     return render(request, 'website/contact.html')
 
 
+def privacy(request):
+    """Privacy Policy page"""
+    return render(request, 'website/privacy.html')
+
+
 def exchange_rates_json(request):
     """API endpoint to get exchange rates for the website"""
     rates = ExchangeRate.objects.filter(is_active=True).select_related('currency')
