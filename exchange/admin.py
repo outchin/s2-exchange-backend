@@ -11,6 +11,7 @@ from .lottery_import import import_lottery_tickets_from_csv
 from .models import (
     CommunicationChannel,
     Currency,
+    ExchangeCommunicationChannel,
     ExchangeOrder,
     ExchangeRate,
     ExchangeRateTier,
@@ -30,6 +31,29 @@ class CommunicationChannelAdmin(SortableAdminMixin, admin.ModelAdmin):
     fieldsets = (
         (None, {
             'fields': ('name', 'platform', 'url', 'description', 'is_active', 'sort_order')
+        }),
+        ('Icon/Logo', {
+            'fields': ('icon_url',),
+            'description': 'Optional: Provide custom icon URL. If empty, default platform icon will be used.'
+        }),
+    )
+
+    @admin.display(description='URL')
+    def url_preview(self, obj):
+        if len(obj.url) > 50:
+            return obj.url[:50] + '...'
+        return obj.url
+
+
+@admin.register(ExchangeCommunicationChannel)
+class ExchangeCommunicationChannelAdmin(SortableAdminMixin, admin.ModelAdmin):
+    list_display = ('name', 'platform', 'url_preview', 'is_primary', 'is_active', 'sort_order', 'updated_at')
+    list_editable = ('is_primary', 'is_active', 'sort_order')
+    list_filter = ('platform', 'is_primary', 'is_active')
+    search_fields = ('name', 'url', 'description')
+    fieldsets = (
+        (None, {
+            'fields': ('name', 'platform', 'url', 'description', 'is_primary', 'is_active', 'sort_order')
         }),
         ('Icon/Logo', {
             'fields': ('icon_url',),

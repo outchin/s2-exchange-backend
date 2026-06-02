@@ -459,3 +459,114 @@ class CommunicationChannel(models.Model):
             self.PLATFORM_WECHAT: 'https://cdn.simpleicons.org/wechat/07C160',
         }
         return icons.get(self.platform, '')
+
+
+class ExchangeCommunicationChannel(models.Model):
+    """
+    Communication channels specifically for exchange transactions and customer support.
+    Examples: Facebook Messenger, Telegram chat, etc. for direct exchange inquiries.
+    This is separate from follow/community channels (CommunicationChannel).
+    """
+    PLATFORM_EMAIL = 'email'
+    PLATFORM_PHONE = 'phone'
+    PLATFORM_WEBSITE = 'website'
+    PLATFORM_FACEBOOK = 'facebook'
+    PLATFORM_MESSENGER = 'messenger'
+    PLATFORM_TELEGRAM = 'telegram'
+    PLATFORM_VIBER = 'viber'
+    PLATFORM_WHATSAPP = 'whatsapp'
+    PLATFORM_LINE = 'line'
+    PLATFORM_WECHAT = 'wechat'
+    PLATFORM_OTHER = 'other'
+
+    PLATFORM_CHOICES = [
+        (PLATFORM_EMAIL, 'Email'),
+        (PLATFORM_PHONE, 'Phone'),
+        (PLATFORM_WEBSITE, 'Website'),
+        (PLATFORM_FACEBOOK, 'Facebook'),
+        (PLATFORM_MESSENGER, 'Facebook Messenger'),
+        (PLATFORM_TELEGRAM, 'Telegram'),
+        (PLATFORM_VIBER, 'Viber'),
+        (PLATFORM_WHATSAPP, 'WhatsApp'),
+        (PLATFORM_LINE, 'LINE'),
+        (PLATFORM_WECHAT, 'WeChat'),
+        (PLATFORM_OTHER, 'Other'),
+    ]
+
+    name = models.CharField(
+        max_length=100,
+        help_text='Display name for the channel (e.g., "Facebook Messenger", "Telegram Support")'
+    )
+    platform = models.CharField(
+        max_length=20,
+        choices=PLATFORM_CHOICES,
+        default=PLATFORM_OTHER,
+        help_text='Platform type'
+    )
+    url = models.URLField(
+        max_length=500,
+        help_text='URL to redirect users for exchange inquiries (e.g., m.me link, Telegram bot link)'
+    )
+    icon_url = models.URLField(
+        max_length=500,
+        blank=True,
+        help_text='URL to channel icon/logo (optional, can use default platform icons)'
+    )
+    description = models.CharField(
+        max_length=255,
+        blank=True,
+        help_text='Short description (e.g., "Chat with us for exchange")'
+    )
+    is_active = models.BooleanField(
+        default=True,
+        help_text='Show this channel to users'
+    )
+    is_primary = models.BooleanField(
+        default=False,
+        help_text='Primary contact method (email, phone, website) vs additional channels'
+    )
+    sort_order = models.PositiveSmallIntegerField(
+        default=0,
+        help_text='Display order (lower numbers appear first)'
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['is_primary', 'sort_order', 'name']
+        verbose_name = 'Exchange Communication Channel'
+        verbose_name_plural = 'Exchange Communication Channels'
+
+    def __str__(self):
+        return f'{self.name} ({self.get_platform_display()})'
+
+    def to_api_dict(self):
+        """Serialize for API response"""
+        return {
+            'id': self.id,
+            'name': self.name,
+            'platform': self.platform,
+            'platform_display': self.get_platform_display(),
+            'url': self.url,
+            'icon_url': self.icon_url or self.get_default_icon_url(),
+            'description': self.description,
+            'is_primary': self.is_primary,
+            'sort_order': self.sort_order,
+        }
+
+    def get_default_icon_url(self):
+        """Return default icon URL based on platform"""
+        # Using Simple Icons CDN for reliable, modern social media icons
+        icons = {
+            self.PLATFORM_EMAIL: 'https://cdn.simpleicons.org/gmail/EA4335',
+            self.PLATFORM_PHONE: 'https://cdn.simpleicons.org/phone/34A853',
+            self.PLATFORM_WEBSITE: 'https://cdn.simpleicons.org/googlechrome/4285F4',
+            self.PLATFORM_FACEBOOK: 'https://cdn.simpleicons.org/facebook/1877F2',
+            self.PLATFORM_MESSENGER: 'https://cdn.simpleicons.org/messenger/00B2FF',
+            self.PLATFORM_TELEGRAM: 'https://cdn.simpleicons.org/telegram/26A5E4',
+            self.PLATFORM_VIBER: 'https://cdn.simpleicons.org/viber/7360F2',
+            self.PLATFORM_WHATSAPP: 'https://cdn.simpleicons.org/whatsapp/25D366',
+            self.PLATFORM_LINE: 'https://cdn.simpleicons.org/line/00C300',
+            self.PLATFORM_WECHAT: 'https://cdn.simpleicons.org/wechat/07C160',
+        }
+        return icons.get(self.platform, '')

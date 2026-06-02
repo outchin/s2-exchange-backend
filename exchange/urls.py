@@ -30,4 +30,5 @@ urlpatterns = [
 
     # Communication channels
     path('channels/', views.communication_channels, name='communication-channels'),
+    path('exchange-channels/', views.exchange_communication_channels, name='exchange-communication-channels'),
 ]
