@@ -129,12 +129,11 @@ function getCurrencySymbol(code) {
 
 // Format rate number
 function formatRate(rate) {
-    // Remove trailing zeros: 128.2 instead of 128.20
+    // Show only 1 decimal place: 128.2, 133.3
     const num = Number(rate);
-    // Use toLocaleString but remove trailing zeros manually
     const formatted = num.toLocaleString('en-US', {
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 4
+        minimumFractionDigits: 1,
+        maximumFractionDigits: 1
     });
     return formatted;
 }
